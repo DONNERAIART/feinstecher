@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="de" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impressum - Feinstecher</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#5cd7e4",
+              "background": "#131313",
+              "on-background": "#e5e2e1",
+              "on-surface": "#e5e2e1",
+              "on-surface-variant": "#bcc9ca",
+              "surface-container-low": "#1c1b1b",
+              "surface-container-high": "#2a2a2a",
+              "outline-variant": "rgba(61, 73, 74, 0.4)"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk", "sans-serif"],
+              "body": ["Manrope", "sans-serif"]
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+        html, body {
+            cursor: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg transform='rotate(-30 16 16)'%3E%3Cpath d='M8 4V6H20V4H8ZM7 6V20H9V6H7ZM9 18H21V20H9V18ZM12.5 20V28H15.5V20H12.5ZM13.5 28L14.5 32L15.5 28H13.5Z' fill='white' stroke='black' stroke-width='0.6'/%3E%3Crect x='10' y='6' width='3' height='8' fill='white' stroke='black' stroke-width='0.6'/%3E%3Crect x='16' y='6' width='3' height='8' fill='white' stroke='black' stroke-width='0.6'/%3E%3C/g%3E%3C/svg%3E") 8 30, auto;
+        }
+        a, button, [role="button"] {
+            cursor: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg transform='rotate(-30 16 16)'%3E%3Cpath d='M8 4V6H20V4H8ZM7 6V20H9V6H7ZM9 18H21V20H9V18ZM12.5 20V28H15.5V20H12.5ZM13.5 28L14.5 32L15.5 28H13.5Z' fill='white' stroke='black' stroke-width='0.6'/%3E%3Crect x='10' y='6' width='3' height='8' fill='white' stroke='black' stroke-width='0.6'/%3E%3Crect x='16' y='6' width='3' height='8' fill='white' stroke='black' stroke-width='0.6'/%3E%3C/g%3E%3C/svg%3E") 8 32, pointer !important;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary/20 selection:text-primary">
+    
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 bg-[#131313]/80 backdrop-blur-xl border-b border-white/5">
+        <div class="flex justify-between items-center h-20 px-8 max-w-7xl mx-auto">
+            <a href="index.html" class="relative group">
+                <div class="bg-white p-1.5 rounded-lg shadow-[0_0_15px_rgba(92,215,228,0.3)] group-hover:shadow-[0_0_20px_rgba(92,215,228,0.5)] transition-all duration-300 active:scale-95">
+                    <img src="feinstecherlogo.png" alt="Feinstecher Logo" class="h-8 md:h-10 w-auto mix-blend-multiply">
+                </div>
+            </a>
+            <div class="flex items-center gap-6">
+                <a href="https://www.instagram.com/feinstecher?igsh=MWR5NTczZnpta2lwbw==" target="_blank" class="text-[#E5E2E1]/70 hover:text-primary transition-all flex items-center gap-2 text-sm font-headline uppercase tracking-widest">
+                    <span class="material-symbols-outlined text-[18px]">photo_camera</span>
+                    Instagram
+                </a>
+                <a href="index.html" class="text-[#E5E2E1]/70 hover:text-primary transition-all flex items-center gap-2 text-sm font-headline uppercase tracking-widest">
+                    <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                    Zurück
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-40 pb-24 px-8 max-w-4xl mx-auto">
+        <header class="mb-16 border-l-4 border-primary pl-8">
+            <h1 class="font-headline text-5xl md:text-6xl font-bold tracking-tight mb-4 text-on-surface uppercase">Impressum</h1>
+            <p class="text-primary font-headline tracking-[0.2em] uppercase text-sm">Gesetzliche Anbieterkennung</p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-on-surface-variant leading-relaxed">
+            <section class="space-y-8">
+                <div class="bg-surface-container-low p-8 rounded border border-white/5">
+                    <h2 class="text-on-surface font-headline text-xl mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary text-sm">account_balance</span>
+                        Angaben gemäß § 5 TMG
+                    </h2>
+                    <p class="text-lg font-semibold text-on-surface">Feinstecher GmbH</p>
+                    <p>Herderstraße 38</p>
+                    <p>22085 Hamburg</p>
+                    <p>Deutschland</p>
+                </div>
+
+                <div class="bg-surface-container-low p-8 rounded border border-white/5">
+                    <h2 class="text-on-surface font-headline text-xl mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary text-sm">person</span>
+                        Vertreten durch
+                    </h2>
+                    <p>Geschäftsführer:</p>
+                    <p class="text-on-surface font-semibold">Mohammad Alimardani</p>
+                    <p class="text-on-surface font-semibold">Cina Josef Pham</p>
+                </div>
+            </section>
+
+            <section class="space-y-8">
+                <div class="bg-surface-container-low p-8 rounded border border-white/5">
+                    <h2 class="text-on-surface font-headline text-xl mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary text-sm">alternate_email</span>
+                        Kontakt
+                    </h2>
+                    <p>Telefon: <span class="text-on-surface">017643177645</span></p>
+                    <p>E-Mail: <a href="mailto:feinstechergmbh@gmail.com" class="text-primary hover:underline">feinstechergmbh@gmail.com</a></p>
+                    <p>Website: <a href="http://www.feinstecher.net" class="text-primary hover:underline">www.feinstecher.net</a></p>
+                </div>
+
+                <div class="bg-surface-container-low p-8 rounded border border-white/5">
+                    <h2 class="text-on-surface font-headline text-xl mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary text-sm">description</span>
+                        Registereintrag
+                    </h2>
+                    <p>Registergericht: <span class="text-on-surface">Amtsgericht Hamburg</span></p>
+                    <p>Registernummer: <span class="text-on-surface">HRB 192661</span></p>
+                    <p class="mt-4">Umsatzsteuer-ID: <span class="text-on-surface">DE406442098</span></p>
+                </div>
+            </section>
+        </div>
+
+        <section class="mt-12 bg-surface-container-low p-8 rounded border border-white/5">
+            <h2 class="text-on-surface font-headline text-xl mb-4 flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary text-sm">gavel</span>
+                Streitschlichtung
+            </h2>
+            <p class="mb-4">Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr" class="text-primary hover:underline" target="_blank">https://ec.europa.eu/consumers/odr</a>.</p>
+            <p>Wir sind nicht verpflichtet und nicht bereit, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-16 bg-[#131313] border-t border-white/5 text-center">
+        <div class="max-w-7xl mx-auto px-8 flex flex-col items-center gap-6">
+            <div class="bg-white p-2 rounded-lg shadow-xl w-fit mx-auto mb-4">
+                <img src="feinstecherlogo.png" alt="Feinstecher Logo" class="h-10 w-auto mix-blend-multiply">
+            </div>
+            <p class="text-xs font-headline uppercase tracking-[0.3em] text-white/20">
+                © 2024 Feinstecher GmbH. Crafted for Excellence.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>

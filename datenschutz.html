@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="de" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datenschutz - Feinstecher</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#5cd7e4",
+              "background": "#131313",
+              "on-background": "#e5e2e1",
+              "on-surface": "#e5e2e1",
+              "on-surface-variant": "#bcc9ca",
+              "surface-container-low": "#1c1b1b",
+              "surface-container-high": "#2a2a2a",
+              "outline-variant": "rgba(61, 73, 74, 0.4)"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk", "sans-serif"],
+              "body": ["Manrope", "sans-serif"]
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+        html, body {
+            cursor: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg transform='rotate(-30 16 16)'%3E%3Cpath d='M8 4V6H20V4H8ZM7 6V20H9V6H7ZM9 18H21V20H9V18ZM12.5 20V28H15.5V20H12.5ZM13.5 28L14.5 32L15.5 28H13.5Z' fill='white' stroke='black' stroke-width='0.6'/%3E%3Crect x='10' y='6' width='3' height='8' fill='white' stroke='black' stroke-width='0.6'/%3E%3Crect x='16' y='6' width='3' height='8' fill='white' stroke='black' stroke-width='0.6'/%3E%3C/g%3E%3C/svg%3E") 8 30, auto;
+        }
+        a, button, [role="button"] {
+            cursor: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg transform='rotate(-30 16 16)'%3E%3Cpath d='M8 4V6H20V4H8ZM7 6V20H9V6H7ZM9 18H21V20H9V18ZM12.5 20V28H15.5V20H12.5ZM13.5 28L14.5 32L15.5 28H13.5Z' fill='white' stroke='black' stroke-width='0.6'/%3E%3Crect x='10' y='6' width='3' height='8' fill='white' stroke='black' stroke-width='0.6'/%3E%3Crect x='16' y='6' width='3' height='8' fill='white' stroke='black' stroke-width='0.6'/%3E%3C/g%3E%3C/svg%3E") 8 32, pointer !important;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary/20 selection:text-primary">
+    
+    <nav class="fixed top-0 w-full z-50 bg-[#131313]/80 backdrop-blur-xl border-b border-white/5">
+        <div class="flex justify-between items-center h-20 px-8 max-w-7xl mx-auto">
+            <a href="index.html" class="relative group">
+                <div class="bg-white p-1.5 rounded-lg shadow-[0_0_15px_rgba(92,215,228,0.3)] group-hover:shadow-[0_0_20px_rgba(92,215,228,0.5)] transition-all duration-300 active:scale-95">
+                    <img src="feinstecherlogo.png" alt="Feinstecher Logo" class="h-8 md:h-10 w-auto mix-blend-multiply">
+                </div>
+            </a>
+            <div class="flex items-center gap-6">
+                <a href="https://www.instagram.com/feinstecher?igsh=MWR5NTczZnpta2lwbw==" target="_blank" class="text-[#E5E2E1]/70 hover:text-primary transition-all flex items-center gap-2 text-sm font-headline uppercase tracking-widest">
+                    <span class="material-symbols-outlined text-[18px]">photo_camera</span>
+                    Instagram
+                </a>
+                <a href="index.html" class="text-[#E5E2E1]/70 hover:text-primary transition-all flex items-center gap-2 text-sm font-headline uppercase tracking-widest">
+                    <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                    Zurück
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-40 pb-24 px-8 max-w-4xl mx-auto">
+        <header class="mb-16 border-l-4 border-primary pl-8">
+            <h1 class="font-headline text-5xl md:text-6xl font-bold tracking-tight mb-4 text-on-surface uppercase">Datenschutz</h1>
+            <p class="text-primary font-headline tracking-[0.2em] uppercase text-sm">Stand: 26. September 2025</p>
+        </header>
+
+        <div class="space-y-12 text-on-surface-variant leading-relaxed">
+            <section class="bg-surface-container-low p-8 rounded border border-white/5">
+                <h2 class="text-on-surface font-headline text-2xl mb-4">1. Überblick zum Datenschutz</h2>
+                <p>Bei Feinstecher nehmen wir den Schutz Ihrer personenbezogenen Daten sehr ernst. Wir verarbeiten Ihre Daten vertraulich und im Einklang mit den gesetzlichen Vorschriften der Datenschutz-Grundverordnung (DSGVO).</p>
+            </section>
+
+            <section class="bg-surface-container-low p-8 rounded border border-white/5">
+                <h2 class="text-on-surface font-headline text-2xl mb-4">2. Verantwortlicher</h2>
+                <div class="font-headline space-y-2">
+                    <p class="text-on-surface text-xl">Feinstecher GmbH</p>
+                    <p>Herderstraße 38, 22085 Hamburg</p>
+                    <p>E-Mail: <a href="mailto:Feinstechergmbh@gmail.com" class="text-primary">Feinstechergmbh@gmail.com</a></p>
+                    <p>Telefon: 017643177645</p>
+                </div>
+            </section>
+
+            <section class="bg-surface-container-low p-8 rounded border border-white/5">
+                <h2 class="text-on-surface font-headline text-2xl mb-4">3. Erhebung und Verarbeitung</h2>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-on-surface font-semibold mb-2">a) Server-Logs</h3>
+                        <p>Automatische Erhebung technischer Daten (IP-Adresse, Browser-Typ). Speicherung für 7 Tage zur Sicherheit.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-on-surface font-semibold mb-2">b) Online-Buchung</h3>
+                        <p>Erfassung von Name, Kontakt und Zahlungsinformationen zur Vertragserfüllung.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-on-surface font-semibold mb-2">c) Cookies</h3>
+                        <p>Einsatz essenzieller Cookies für die Funktionalität des Buchungssystems.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-surface-container-low p-8 rounded border border-white/5">
+                <h2 class="text-on-surface font-headline text-2xl mb-4">4. Ihre Rechte</h2>
+                <p>Sie haben folgende Rechte bezüglich Ihrer Daten: <span class="text-on-surface">Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit und Widerspruch.</span></p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="w-full py-16 bg-[#131313] border-t border-white/5 text-center">
+        <div class="max-w-7xl mx-auto px-8 flex flex-col items-center gap-6">
+            <div class="bg-white p-2 rounded-lg shadow-xl w-fit mx-auto mb-4">
+                <img src="feinstecherlogo.png" alt="Feinstecher Logo" class="h-10 w-auto mix-blend-multiply">
+            </div>
+            <p class="text-xs font-headline uppercase tracking-[0.3em] text-white/20">
+                © 2024 Feinstecher GmbH. GDPR Compliant.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>

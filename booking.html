@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="de" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feinstecher - Booking & Checkout</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#5cd7e4",
+              "background": "#131313",
+              "on-background": "#e5e2e1",
+              "on-surface": "#e5e2e1",
+              "on-surface-variant": "#bcc9ca",
+              "surface-container-low": "#1c1b1b",
+              "surface-container-high": "#2a2a2a",
+              "surface-container-highest": "#353534",
+              "outline-variant": "rgba(61, 73, 74, 0.4)"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk", "sans-serif"],
+              "body": ["Manrope", "sans-serif"],
+              "label": ["Space Grotesk", "sans-serif"]
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+        html, body {
+            cursor: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg transform='rotate(-30 16 16)'%3E%3Cpath d='M8 4V6H20V4H8ZM7 6V20H9V6H7ZM9 18H21V20H9V18ZM12.5 20V28H15.5V20H12.5ZM13.5 28L14.5 32L15.5 28H13.5Z' fill='white' stroke='black' stroke-width='0.6'/%3E%3Crect x='10' y='6' width='3' height='8' fill='white' stroke='black' stroke-width='0.6'/%3E%3Crect x='16' y='6' width='3' height='8' fill='white' stroke='black' stroke-width='0.6'/%3E%3C/g%3E%3C/svg%3E") 8 30, auto;
+        }
+        a, button, [role="button"], .tier-card {
+            cursor: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg transform='rotate(-30 16 16)'%3E%3Cpath d='M8 4V6H20V4H8ZM7 6V20H9V6H7ZM9 18H21V20H9V18ZM12.5 20V28H15.5V20H12.5ZM13.5 28L14.5 32L15.5 28H13.5Z' fill='white' stroke='black' stroke-width='0.6'/%3E%3Crect x='10' y='6' width='3' height='8' fill='white' stroke='black' stroke-width='0.6'/%3E%3Crect x='16' y='6' width='3' height='8' fill='white' stroke='black' stroke-width='0.6'/%3E%3C/g%3E%3C/svg%3E") 8 32, pointer !important;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary/20 selection:text-primary">
+    
+    <nav class="fixed top-0 w-full z-50 bg-[#131313]/80 backdrop-blur-xl border-b border-white/5">
+        <div class="flex justify-between items-center h-20 px-8 max-w-7xl mx-auto">
+            <a href="index.html" class="relative group">
+                <div class="bg-white p-1.5 rounded-lg shadow-[0_0_15px_rgba(92,215,228,0.3)] group-hover:shadow-[0_0_20px_rgba(92,215,228,0.5)] transition-all duration-300 active:scale-95">
+                    <img src="feinstecherlogo.png" alt="Feinstecher Logo" class="h-8 md:h-10 w-auto mix-blend-multiply">
+                </div>
+            </a>
+            <div class="flex items-center gap-6">
+                <a href="https://www.instagram.com/feinstecher?igsh=MWR5NTczZnpta2lwbw==" target="_blank" class="text-[#E5E2E1]/70 hover:text-primary transition-all flex items-center gap-2 text-sm font-headline uppercase tracking-widest">
+                    <span class="material-symbols-outlined text-[18px]">photo_camera</span>
+                    Instagram
+                </a>
+                <a href="index.html" class="text-[#E5E2E1]/70 hover:text-primary transition-all flex items-center gap-2 text-sm font-headline uppercase tracking-widest">
+                    <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                    Abbrechen
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-24 px-8 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16">
+        <!-- Left Column: Forms -->
+        <div class="lg:col-span-7 space-y-16">
+            <header class="border-l-4 border-primary pl-6">
+                <h1 class="font-headline text-5xl font-bold tracking-tight mb-2 text-on-surface uppercase">Station Sichern</h1>
+                <p class="text-on-surface-variant text-lg">Wähle deinen Tarif und reserviere deinen Platz im Atelier.</p>
+            </header>
+
+            <!-- Section 1: Tarif-Auswahl -->
+            <section class="bg-surface-container-low p-8 rounded border border-white/5">
+                <h2 class="font-headline text-2xl mb-8 flex items-center gap-3 decoration-primary/30 underline underline-offset-8">
+                    <span class="material-symbols-outlined text-primary">payments</span>
+                    1. Tarif Wählen
+                </h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="tier-selector">
+                    <button class="tier-card p-6 rounded border border-primary bg-primary/5 text-left transition-all" data-price="70" data-name="1 Tag">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="font-headline font-bold text-lg">1 Tag</span>
+                            <span class="text-primary font-bold text-xl">70€</span>
+                        </div>
+                        <p class="text-xs text-on-surface-variant italic">Einmalige Buchung</p>
+                    </button>
+                    <button class="tier-card p-6 rounded border border-white/5 hover:border-primary/50 text-left transition-all" data-price="270" data-name="5 Tage">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="font-headline font-bold text-lg">5 Tage</span>
+                            <span class="text-primary font-bold text-xl">270€</span>
+                        </div>
+                        <p class="text-xs text-on-surface-variant italic">Pro Monat</p>
+                    </button>
+                    <button class="tier-card p-6 rounded border border-white/5 hover:border-primary/50 text-left transition-all" data-price="500" data-name="10 Tage">
+                        <div class="flex justify-between items-start mb-2 flex-wrap">
+                            <span class="font-headline font-bold text-lg">10 Tage</span>
+                            <span class="text-primary font-bold text-xl">500€</span>
+                        </div>
+                        <p class="text-xs text-on-surface-variant italic">Pro Monat (Beliebt)</p>
+                    </button>
+                    <button class="tier-card p-6 rounded border border-white/5 hover:border-primary/50 text-left transition-all" data-price="1050" data-name="Unlimited">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="font-headline font-bold text-lg">Unlimited</span>
+                            <span class="text-primary font-bold text-xl">1050€</span>
+                        </div>
+                        <p class="text-xs text-on-surface-variant italic">Full-Time Artist</p>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Section 2: Dates -->
+            <section class="bg-surface-container-low p-8 rounded border border-white/5">
+                <h2 class="font-headline text-2xl mb-8 flex items-center gap-3 decoration-primary/30 underline underline-offset-8">
+                    <span class="material-symbols-outlined text-primary">calendar_month</span>
+                    2. Zeitraum & Artist Info
+                </h2>
+                <div class="space-y-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <label class="block text-xs font-headline uppercase tracking-widest text-[#E5E2E1]/50 mb-3">Gewünschtes Startdatum</label>
+                            <input type="date" class="w-full bg-[#131313] border border-white/10 rounded p-4 text-on-surface focus:outline-none focus:border-primary transition-all">
+                        </div>
+                        <div class="relative">
+                            <label class="block text-xs font-headline uppercase tracking-widest text-[#E5E2E1]/50 mb-3">Vollständiger Name</label>
+                            <input type="text" class="w-full bg-[#131313] border border-white/10 rounded p-4 text-on-surface focus:outline-none focus:border-primary transition-all" placeholder="Dein Name">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-headline uppercase tracking-widest text-[#E5E2E1]/50 mb-3">Instagram / Portfolio Link</label>
+                        <input type="url" class="w-full bg-[#131313] border border-white/10 rounded p-4 text-on-surface focus:outline-none focus:border-primary transition-all" placeholder="https://instagram.com/...">
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Right Column: Summary & Payment -->
+        <div class="lg:col-span-5">
+            <div class="sticky top-32 space-y-8">
+                <div class="bg-surface-container-highest p-10 rounded shadow-[0_40px_80px_rgba(0,178,178,0.08)] border border-white/5">
+                    <h3 class="font-headline text-3xl font-bold mb-8 uppercase tracking-tight italic">Übersicht</h3>
+                    
+                    <div class="space-y-6 mb-10 text-sm border-b border-white/5 pb-10">
+                        <div class="flex justify-between items-center text-on-surface-variant">
+                            <span class="uppercase tracking-widest text-[10px]">Gewählter Tarif</span>
+                            <span class="font-headline text-on-surface font-bold text-lg" id="summary-tier-name">1 Tag</span>
+                        </div>
+                        <div class="flex justify-between items-center text-on-surface-variant">
+                            <span class="uppercase tracking-widest text-[10px]">Studio Zugang</span>
+                            <span class="font-headline text-on-surface">Individueller Code</span>
+                        </div>
+                        <div class="flex justify-between items-center text-on-surface-variant">
+                            <span class="uppercase tracking-widest text-[10px]">Extras</span>
+                            <span class="font-headline text-primary">Hygiene Flatrate</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4 mb-10">
+                        <div class="flex justify-between items-end">
+                            <span class="font-headline text-xl uppercase tracking-tighter">Gesamtpreis</span>
+                            <div class="text-right">
+                                <span class="font-headline text-4xl font-bold text-primary block" id="summary-total">70,00€</span>
+                                <span class="text-[10px] text-on-surface-variant uppercase tracking-widest">Inkl. MwSt.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <label class="flex items-start gap-4 cursor-pointer mb-10 group">
+                        <div class="relative flex items-center justify-center mt-1">
+                            <input type="checkbox" class="peer appearance-none w-5 h-5 border border-white/20 rounded-sm checked:bg-primary checked:border-primary transition-all bg-[#131313]">
+                            <span class="material-symbols-outlined absolute text-[16px] text-on-primary opacity-0 peer-checked:opacity-100 pointer-events-none transition-all">check</span>
+                        </div>
+                        <span class="text-[11px] text-on-surface-variant leading-relaxed">
+                            Ich habe die <a href="agb.html" class="text-primary hover:underline">AGB</a> gelesen und akzeptiere den Verzicht auf prozentuale Abgaben.
+                        </span>
+                    </label>
+
+                    <button class="w-full bg-primary text-on-primary font-headline font-bold uppercase tracking-[0.2em] py-5 rounded-sm hover:bg-primary/90 transition-all shadow-[0_20px_40px_rgba(0,178,178,0.2)]">
+                        Checkout Starten
+                    </button>
+                    
+                    <div class="flex justify-center gap-6 mt-8 opacity-30 grayscale contrast-125">
+                        <span class="material-symbols-outlined">credit_card</span>
+                        <span class="material-symbols-outlined">account_balance_wallet</span>
+                        <span class="material-symbols-outlined">shield</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="w-full py-16 bg-[#131313] border-t border-white/5 text-center px-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-headline uppercase tracking-[0.3em] text-on-surface-variant/40">
+            <p>© 2024 Feinstecher GmbH. Secure Booking System.</p>
+            <div class="flex gap-8">
+                <a href="impressum.html">Impressum</a>
+                <a href="datenschutz.html">Datenschutz</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple UI script for tier selection
+        const cards = document.querySelectorAll('.tier-card');
+        const summaryName = document.getElementById('summary-tier-name');
+        const summaryTotal = document.getElementById('summary-total');
+
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                // Remove active classes
+                cards.forEach(c => {
+                    c.classList.remove('border-primary', 'bg-primary/5');
+                    c.classList.add('border-white/5');
+                });
+                // Add active classes to clicked
+                card.classList.add('border-primary', 'bg-primary/5');
+                card.classList.remove('border-white/5');
+
+                // Update summary
+                summaryName.innerText = card.getAttribute('data-name');
+                summaryTotal.innerText = card.getAttribute('data-price') + ',00€';
+            });
+        });
+
+        // Check URL for plan (e.g. from Home page)
+        const urlParams = new URLSearchParams(window.location.search);
+        const tierParam = urlParams.get('tier');
+        if (tierParam) {
+            // Mapping for simplicity
+            const map = {
+                '1-day': '1 Tag',
+                '5-days': '5 Tage',
+                '10-days': '10 Tage',
+                'unlimited': 'Unlimited'
+            };
+            const targetName = map[tierParam];
+            const targetCard = Array.from(cards).find(c => c.getAttribute('data-name') === targetName);
+            if (targetCard) targetCard.click();
+        }
+    </script>
+</body>
+</html>

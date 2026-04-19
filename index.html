@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="de" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feinstecher - High-End Tattoo Workstations Hamburg</title>
+    <meta name="description" content="Miete flexible High-End Workstations für Tattoo, PMU und Piercing im Herzen von Hamburg. Medizinischer Standard, modernes Atelier.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary-fixed": "#002023",
+              "primary-fixed-dim": "#5cd7e4",
+              "on-tertiary-fixed-variant": "#0d4e54",
+              "on-error": "#690005",
+              "primary": "#5cd7e4",
+              "on-error-container": "#ffdad6",
+              "background": "#131313",
+              "secondary-fixed": "#97f1fd",
+              "tertiary-fixed-dim": "#98d0d7",
+              "outline": "#869395",
+              "secondary-container": "#007984",
+              "inverse-on-surface": "#313030",
+              "error": "#ffb4ab",
+              "surface-container-highest": "#353534",
+              "secondary-fixed-dim": "#7ad4e0",
+              "on-tertiary-container": "#003337",
+              "inverse-primary": "#006971",
+              "surface-bright": "#3a3939",
+              "inverse-surface": "#e5e2e1",
+              "surface-container-high": "#2a2a2a",
+              "primary-container": "#01a4b0",
+              "primary-fixed": "#84f3ff",
+              "surface-container-lowest": "#0e0e0e",
+              "on-secondary": "#00363c",
+              "surface-container": "#201f1f",
+              "surface-tint": "#5cd7e4",
+              "outline-variant": "#3d494a",
+              "surface-container-low": "#1c1b1b",
+              "on-primary-fixed": "#002023",
+              "on-primary": "#00363b",
+              "tertiary": "#98d0d7",
+              "error-container": "#93000a",
+              "on-primary-container": "#003337",
+              "surface-variant": "#353534",
+              "on-secondary-container": "#caf8ff",
+              "on-background": "#e5e2e1",
+              "on-surface": "#e5e2e1",
+              "surface-dim": "#131313",
+              "tertiary-container": "#669da4",
+              "secondary": "#7ad4e0",
+              "on-tertiary": "#00363b",
+              "on-primary-fixed-variant": "#004f55",
+              "on-secondary-fixed": "#001f23",
+              "on-surface-variant": "#bcc9ca",
+              "tertiary-fixed": "#b3ecf3",
+              "on-secondary-fixed-variant": "#004f56",
+              "surface": "#131313"
+            },
+            borderRadius: {
+              "DEFAULT": "0.125rem",
+              "lg": "0.25rem",
+              "xl": "0.5rem",
+              "full": "0.75rem"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk", "sans-serif"],
+              "body": ["Manrope", "sans-serif"],
+              "label": ["Space Grotesk", "sans-serif"]
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      @layer components {
+        .btn-primary {
+          background-color: #5cd7e4;
+          color: #00363b;
+          padding: 1rem 2rem;
+          border-radius: 0.125rem;
+          font-family: 'Space Grotesk', sans-serif;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          transition: all 0.3s;
+          box-shadow: 0 20px 40px rgba(0,178,178,0.15);
+        }
+        .btn-primary:hover { background-color: #01a4b0; }
+        .btn-outline {
+          border: 1px solid rgba(134, 147, 149, 0.4);
+          color: #e5e2e1;
+          padding: 1rem 2rem;
+          border-radius: 0.125rem;
+          font-family: 'Space Grotesk', sans-serif;
+          text-transform: uppercase;
+          transition: all 0.3s;
+        }
+        .btn-outline:hover { border-color: #869395; background-color: #1c1b1b; }
+      }
+      #video-hero-container { position: relative; min-height: 100vh; overflow: hidden; background: #131313; }
+      #hero-video { width: 100%; height: 100vh; object-fit: cover; opacity: 0.4; }
+      .hero-content-overlay { position: absolute; inset: 0; display: flex; align-items: center; z-index: 10; }
+
+      /* Global Tilted Tattoo Machine Cursor - Improved Needle Visibility */
+      html, body {
+          cursor: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg transform='rotate(-30 16 16)'%3E%3Cpath d='M8 4V6H20V4H8ZM7 6V20H9V6H7ZM9 18H21V20H9V18ZM12.5 20V28H15.5V20H12.5ZM13.5 28L14.5 32L15.5 28H13.5Z' fill='white' stroke='black' stroke-width='0.6'/%3E%3Crect x='10' y='6' width='3' height='8' fill='white' stroke='black' stroke-width='0.6'/%3E%3Crect x='16' y='6' width='3' height='8' fill='white' stroke='black' stroke-width='0.6'/%3E%3C/g%3E%3C/svg%3E") 8 30, auto;
+      }
+      
+      a, button, [role="button"], .tier-card {
+          cursor: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg transform='rotate(-30 16 16)'%3E%3Cpath d='M8 4V6H20V4H8ZM7 6V20H9V6H7ZM9 18H21V20H9V18ZM12.5 20V28H15.5V20H12.5ZM13.5 28L14.5 32L15.5 28H13.5Z' fill='white' stroke='black' stroke-width='0.6'/%3E%3Crect x='10' y='6' width='3' height='8' fill='white' stroke='black' stroke-width='0.6'/%3E%3Crect x='16' y='6' width='3' height='8' fill='white' stroke='black' stroke-width='0.6'/%3E%3C/g%3E%3C/svg%3E") 8 32, pointer !important;
+      }
+
+      .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 200, 'grad' 0, 'opsz' 24;
+      }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary-container selection:text-on-primary-container">
+    
+    <!-- TopNavBar (Shared Component) -->
+    <nav class="fixed top-0 w-full z-50 bg-[#131313]/80 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,178,178,0.05)] bg-gradient-to-b from-[#131313] to-transparent">
+    </nav>
+        <div class="flex justify-between items-center h-20 px-8 max-w-7xl mx-auto">
+            <div class="relative group">
+                <div class="bg-white p-1.5 rounded-lg shadow-[0_0_15px_rgba(92,215,228,0.3)] group-hover:shadow-[0_0_20px_rgba(92,215,228,0.5)] transition-all duration-300 active:scale-95">
+                    <img src="feinstecherlogo.png" alt="Feinstecher Logo" class="h-8 md:h-10 w-auto mix-blend-multiply">
+                </div>
+                <!-- Subtle glow effect behind the box -->
+                <div class="absolute inset-0 bg-primary/10 blur-xl -z-10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </div>
+            <div class="hidden md:flex gap-8 items-center font-headline tracking-tight">
+                <a class="text-primary border-b-2 border-primary pb-1 hover:opacity-80 transition-all" href="index.html">Home</a>
+                <a class="text-[#E5E2E1]/70 hover:text-primary transition-all" href="booking.html">Stations</a>
+                <a class="text-[#E5E2E1]/70 hover:text-primary transition-all" href="agb.html">AGB</a>
+                <a class="text-[#E5E2E1]/70 hover:text-primary transition-all" href="impressum.html">Impressum</a>
+                <a href="https://www.instagram.com/feinstecher?igsh=MWR5NTczZnpta2lwbw==" target="_blank" class="text-[#E5E2E1]/70 hover:text-primary transition-all flex items-center gap-1">
+                    <span class="material-symbols-outlined text-[20px]">photo_camera</span>
+                    IG
+                </a>
+            </div>
+            <a href="booking.html" class="hidden md:block bg-primary text-on-primary rounded font-label px-6 py-2 hover:opacity-80 transition-all active:scale-95">
+                Book Now
+            </a>
+            <button class="md:hidden text-on-surface">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Video Hero Section -->
+            <video id="hero-video" preload="auto" muted playsinline webkit-playsinline class="w-full h-full object-cover">
+                <source src="feinstecher-promo.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            
+            <div class="hero-content-overlay">
+                <div class="max-w-7xl mx-auto px-8 w-full">
+                    <div class="md:w-3/5 space-y-8">
+                        <p class="font-label text-primary uppercase tracking-[0.3em] text-sm animate-pulse">Entering the Atelier</p>
+                        <h1 class="font-headline text-[3.5rem] md:text-[5rem] leading-none font-bold tracking-[-0.04em] text-on-surface">
+                            DEIN PLATZ.<br/>
+                            <span class="text-primary/90">DEINE KUNST.</span><br/>
+                            DEINE FREIHEIT.
+                        </h1>
+                        <p class="font-body text-[1.375rem] font-semibold text-on-surface-variant max-w-xl leading-relaxed">
+                            Flexible Workstations für Elite Tattoo-, PMU- und Piercing-Artists im Herzen von Hamburg. Ein Clinical Atelier, das deinen hohen Standards entspricht.
+                        </p>
+                        <div class="pt-4 flex gap-4">
+                            <a href="booking.html" class="btn-primary">
+                                Jetzt Buchen
+                                <span class="material-symbols-outlined text-lg">arrow_forward</span>
+                            </a>
+                            <button class="btn-outline">
+                                Stationen Ansehen
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Unser Studio Section -->
+        <section class="py-32 bg-surface relative">
+            <div class="max-w-7xl mx-auto px-8">
+                <div class="mb-24 md:w-2/3">
+                    <h2 class="font-headline text-[1.75rem] font-medium text-primary mb-4 uppercase tracking-[0.2em]">Unser Studio</h2>
+                    <p class="font-body text-xl text-on-surface-variant leading-relaxed">
+                        Unser Studio bietet dir den Raum, den du für deine Arbeit brauchst. Alles ist bereit, bring deine Maschine und Farbe mit und leg direkt los. Wir stellen diverse Hygieneartikel und Tattoobedarf zur Verfügung, sodass du dich komplett auf deine Kunst konzentrieren kannst.
+                    </p>
+                </div>
+                
+                <!-- Gallery Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
+                    <div class="group relative overflow-hidden rounded-lg aspect-[4/3] bg-surface-container shadow-lg">
+                        <img src="feinstecher-spot1.jpg" alt="Studio Spot 1" class="w-full h-full object-cover grayscale-[0.3] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000 ease-out">
+                        <div class="absolute inset-0 bg-primary/5 opacity-40 group-hover:opacity-0 transition-opacity duration-700"></div>
+                    </div>
+                    <div class="group relative overflow-hidden rounded-lg aspect-[4/3] bg-surface-container shadow-lg">
+                        <img src="feinstecher-spot2.jpg" alt="Studio Spot 2" class="w-full h-full object-cover grayscale-[0.3] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000 ease-out">
+                        <div class="absolute inset-0 bg-primary/5 opacity-40 group-hover:opacity-0 transition-opacity duration-700"></div>
+                    </div>
+                    <div class="group relative overflow-hidden rounded-lg aspect-[4/3] bg-surface-container shadow-lg">
+                        <img src="feinstecher-sofa.jpg" alt="Studio Sofa" class="w-full h-full object-cover grayscale-[0.3] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000 ease-out">
+                        <div class="absolute inset-0 bg-primary/5 opacity-40 group-hover:opacity-0 transition-opacity duration-700"></div>
+                    </div>
+                    <div class="group relative overflow-hidden rounded-lg aspect-[4/3] bg-surface-container shadow-lg">
+                        <img src="feinstecher-sofa-fenster.jpg" alt="Sofa at Window" class="w-full h-full object-cover grayscale-[0.3] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000 ease-out">
+                        <div class="absolute inset-0 bg-primary/5 opacity-40 group-hover:opacity-0 transition-opacity duration-700"></div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Feature 1 -->
+                    <div class="bg-surface-container-low p-10 rounded group hover:bg-surface-container-high transition-colors relative overflow-hidden">
+                        <div class="absolute bottom-0 left-0 w-full h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
+                        <span class="material-symbols-outlined text-4xl text-primary mb-6" style="font-variation-settings: 'wght' 200;">calendar_month</span>
+                        <h3 class="font-headline text-xl font-medium mb-4">Flexible Raten</h3>
+                        <p class="font-body text-on-surface-variant text-sm">
+                            Tages-, Wochen- oder Monatsmiete. Du entscheidest, wann du arbeitest. Keine versteckten Kosten, volle Transparenz.
+                        </p>
+                    </div>
+                    <!-- Feature 2 -->
+                    <div class="bg-surface-container-low p-10 rounded group hover:bg-surface-container-high transition-colors relative overflow-hidden">
+                        <div class="absolute bottom-0 left-0 w-full h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
+                        <span class="material-symbols-outlined text-4xl text-primary mb-6" style="font-variation-settings: 'wght' 200;">medical_services</span>
+                        <h3 class="font-headline text-xl font-medium mb-4">High-End Equipment</h3>
+                        <p class="font-body text-on-surface-variant text-sm">
+                            Medizinischer Standard. Voll ausgestattete Stationen mit hochwertigen Liegen, Beleuchtung und Sterilisationsbereichen.
+                        </p>
+                    </div>
+                    <!-- Feature 3 -->
+                    <div class="bg-surface-container-low p-10 rounded group hover:bg-surface-container-high transition-colors relative overflow-hidden">
+                        <div class="absolute bottom-0 left-0 w-full h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
+                        <span class="material-symbols-outlined text-4xl text-primary mb-6" style="font-variation-settings: 'wght' 200;">location_on</span>
+                        <h3 class="font-headline text-xl font-medium mb-4">Zentral in Hamburg</h3>
+                        <p class="font-body text-on-surface-variant text-sm">
+                            Perfekt erreichbar in Hamburg-Uhlenhorst für dich und deine Kunden. Ein repräsentativer Standort, der Vertrauen schafft.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Detailed Services & Benefits -->
+        <section class="py-24 bg-[#131313] border-y border-white/5 overflow-hidden">
+            <div class="max-w-5xl mx-auto px-8 text-center">
+                <!-- Title with Teal Bars -->
+                <div class="flex justify-center items-center gap-6 mb-12">
+                    <div class="w-[2px] h-10 bg-primary shadow-[0_0_15px_rgba(92,215,228,0.5)]"></div>
+                    <h2 class="font-headline text-3xl md:text-5xl font-bold tracking-tight text-on-surface uppercase leading-none">
+                        Mehr zur Dienstleistung
+                    </h2>
+                    <div class="w-[2px] h-10 bg-primary shadow-[0_0_15px_rgba(92,215,228,0.5)]"></div>
+                </div>
+
+                <!-- Description Text -->
+                <p class="font-body text-lg text-white/70 leading-relaxed mb-16 max-w-3xl mx-auto">
+                    Wir bieten flexibel buchbare Arbeitsplätze für Artist. Du kannst dank individuellem Zugangscode jederzeit Zutritt zu unseren Studios bekommen und arbeitest ganz ohne prozentuale Abgabe.
+                </p>
+
+                <!-- HAUPTVORTEILE Subtitle -->
+                <h3 class="font-headline text-primary italic uppercase tracking-[0.4em] text-xl mb-12">
+                    Hauptvorteile
+                </h3>
+
+                <!-- 3-Column Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-12">
+                    <!-- Benefit 1 -->
+                    <div class="space-y-4 group">
+                        <div class="flex items-center justify-center md:justify-start gap-4 mb-2">
+                            <span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg group-hover:scale-110 transition-transform">calendar_today</span>
+                            <h4 class="font-headline font-bold text-on-surface text-lg uppercase tracking-tight">Buchung nach Bedarf</h4>
+                        </div>
+                        <p class="text-sm text-on-surface-variant/80 font-body leading-relaxed text-center md:text-left">
+                            Absolute Flexibilität für deinen Terminkalender.
+                        </p>
+                    </div>
+
+                    <!-- Benefit 2 -->
+                    <div class="space-y-4 group">
+                        <div class="flex items-center justify-center md:justify-start gap-4 mb-2">
+                            <span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg group-hover:scale-110 transition-transform">percent</span>
+                            <h4 class="font-headline font-bold text-on-surface text-lg uppercase tracking-tight text-center md:text-left">Keine prozentualen Abgaben</h4>
+                        </div>
+                        <div class="flex items-start justify-center md:justify-start gap-2">
+                            <span class="text-primary mt-1 flex-shrink-0">•</span>
+                            <p class="text-sm text-on-surface-variant/80 font-body leading-relaxed text-center md:text-left">
+                                Dein Umsatz gehört zu 100% dir.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Benefit 3 -->
+                    <div class="space-y-4 group">
+                        <div class="flex items-center justify-center md:justify-start gap-4 mb-2">
+                            <span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg group-hover:scale-110 transition-transform">key</span>
+                            <h4 class="font-headline font-bold text-on-surface text-lg uppercase tracking-tight">Individueller Zugangscode</h4>
+                        </div>
+                        <div class="flex items-start justify-center md:justify-start gap-2">
+                            <span class="text-primary mt-1 flex-shrink-0">•</span>
+                            <p class="text-sm text-on-surface-variant/80 font-body leading-relaxed text-center md:text-left">
+                                Komm und geh wann du willst.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Asymmetric Image Break -->
+        <section class="py-24 bg-surface-container-lowest">
+            <div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-12 gap-16 items-center">
+                <div class="md:col-span-7">
+                    <div class="relative rounded group shadow-2xl overflow-hidden">
+                        <img alt="Feinstecher Artist" class="w-full h-auto object-contain rounded grayscale-[0.3] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 ease-in-out" src="feinstecher-artist.jpg">
+                        <div class="absolute inset-0 bg-primary/5 opacity-30 group-hover:opacity-0 transition-opacity duration-1000"></div>
+                    </div>
+                </div>
+                <div class="md:col-span-5 space-y-8">
+                    <h2 class="font-headline text-[1.75rem] font-medium text-on-surface leading-snug">
+                        Fokus auf das Wesentliche.<br/>Deine Arbeit.
+                    </h2>
+                    <p class="font-body text-on-surface-variant">
+                        Wir kümmern uns um die Infrastruktur, Hygiene-Standards und das Ambiente. Du konzentrierst dich voll und ganz auf deine Kunst und deine Kunden. Trete einer Community von Elite-Artists bei.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!-- Pricing Tarife -->
+        <section class="py-32 bg-background relative overflow-hidden" id="tarife">
+            <div class="absolute -top-24 -right-24 w-96 h-96 bg-primary/5 blur-[120px] rounded-full"></div>
+            <div class="max-w-7xl mx-auto px-8 relative z-10">
+                <div class="text-center mb-24">
+                    <h2 class="font-headline text-5xl font-bold text-on-surface mb-6 uppercase tracking-tight">Tarife</h2>
+                    <p class="text-primary font-headline uppercase tracking-[0.2em] text-sm">Wähle deinen Platz nach Bedarf</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- 1 Tag -->
+                    <div class="bg-surface-container-low p-10 rounded border border-white/5 hover:border-primary/30 transition-all group flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-headline text-2xl font-bold text-on-surface mb-2">1 Tag</h3>
+                            <p class="text-on-surface-variant text-sm mb-8">Einfach & Flexibel</p>
+                            <div class="font-headline text-4xl font-bold text-primary mb-8 underline decoration-primary/20">70€</div>
+                        </div>
+                        <a href="booking.html?tier=1-day" class="btn-primary w-full justify-center">Jetzt Buchen</a>
+                    </div>
+                    <!-- 5 Tage -->
+                    <div class="bg-surface-container-low p-10 rounded border border-white/5 hover:border-primary/30 transition-all group flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-headline text-2xl font-bold text-on-surface mb-2">5 Tage</h3>
+                            <p class="text-on-surface-variant text-sm mb-8">Gelegentliche Nutzung</p>
+                            <div class="font-headline text-4xl font-bold text-primary mb-8">270€<span class="text-lg text-on-surface-variant ml-2 font-normal">/monat</span></div>
+                        </div>
+                        <a href="booking.html?tier=5-days" class="btn-primary w-full justify-center">Jetzt Buchen</a>
+                    </div>
+                    <!-- 10 Tage -->
+                    <div class="bg-surface-container-low p-10 rounded border border-primary/50 bg-gradient-to-b from-primary/5 to-transparent transition-all group flex flex-col justify-between shadow-[0_30px_60px_rgba(0,178,178,0.05)]">
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-headline text-2xl font-bold text-on-surface mb-2">10 Tage</h3>
+                                <span class="bg-primary text-on-primary text-[10px] uppercase font-bold px-2 py-1 rounded-full">Beliebt</span>
+                            </div>
+                            <p class="text-on-surface-variant text-sm mb-8">Perfekt für Side-Hustles</p>
+                            <div class="font-headline text-4xl font-bold text-primary mb-8">500€<span class="text-lg text-on-surface-variant ml-2 font-normal">/monat</span></div>
+                        </div>
+                        <a href="booking.html?tier=10-days" class="btn-primary w-full justify-center">Jetzt Buchen</a>
+                    </div>
+                    <!-- 15 Tage -->
+                    <div class="bg-surface-container-low p-10 rounded border border-white/5 hover:border-primary/30 transition-all group flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-headline text-2xl font-bold text-on-surface mb-2">15 Tage</h3>
+                            <p class="text-on-surface-variant text-sm mb-8">Regelmäßige Arbeit</p>
+                            <div class="font-headline text-4xl font-bold text-primary mb-8">700€<span class="text-lg text-on-surface-variant ml-2 font-normal">/monat</span></div>
+                        </div>
+                        <a href="booking.html?tier=15-days" class="btn-primary w-full justify-center">Jetzt Buchen</a>
+                    </div>
+                    <!-- 20 Tage -->
+                    <div class="bg-surface-container-low p-10 rounded border border-white/5 hover:border-primary/30 transition-all group flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-headline text-2xl font-bold text-on-surface mb-2">20 Tage</h3>
+                            <p class="text-on-surface-variant text-sm mb-8">Vollzeit Artist</p>
+                            <div class="font-headline text-4xl font-bold text-primary mb-8">830€<span class="text-lg text-on-surface-variant ml-2 font-normal">/monat</span></div>
+                        </div>
+                        <a href="booking.html?tier=20-days" class="btn-primary w-full justify-center">Jetzt Buchen</a>
+                    </div>
+                    <!-- Unlimited -->
+                    <div class="bg-surface-container p-10 rounded border border-primary transition-all group flex flex-col justify-between shadow-[0_30px_60px_rgba(0,178,178,0.1)]">
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-headline text-2xl font-bold text-primary mb-2 uppercase tracking-widest">Unlimited</h3>
+                                <span class="bg-primary text-on-primary text-[10px] uppercase font-bold px-2 py-1 rounded-full">Elite</span>
+                            </div>
+                            <p class="text-on-surface-variant text-sm mb-8">Maximale Freiheit</p>
+                            <div class="font-headline text-4xl font-bold text-on-surface mb-8">1050€<span class="text-lg text-on-surface-variant ml-2 font-normal">/monat</span></div>
+                        </div>
+                        <a href="booking.html?tier=unlimited" class="btn-primary w-full justify-center">Jetzt Buchen</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-20 bg-[#131313] border-t border-[#E5E2E1]/10">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-8 max-w-7xl mx-auto">
+            <div class="md:col-span-2 space-y-6">
+                <div class="bg-white p-2 rounded-lg shadow-xl w-fit">
+                    <img src="feinstecherlogo.png" alt="Feinstecher Logo" class="h-10 md:h-12 w-auto mix-blend-multiply">
+                </div>
+                <p class="text-on-surface-variant max-w-sm">
+                    Premium Co-Working Space für die besten Tätowierer, PMU- und Piercing-Artists in Hamburg.
+                </p>
+                <div class="flex gap-4">
+                    <a href="https://www.instagram.com/feinstecher?igsh=MWR5NTczZnpta2lwbw==" target="_blank" class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all">
+                        <span class="material-symbols-outlined text-[20px]">photo_camera</span>
+                    </a>
+                </div>
+            </div>
+            <div class="space-y-6">
+                <h4 class="font-headline text-on-surface font-medium uppercase tracking-widest text-sm">Location</h4>
+                <div class="space-y-2 text-on-surface-variant text-sm">
+                    <p>Feinstecher GmbH</p>
+                    <p>Herderstraße 38</p>
+                    <p>22085 Hamburg</p>
+                    <p class="pt-2">feinstechergmbh@gmail.com</p>
+                </div>
+            </div>
+            <div class="space-y-6">
+                <h4 class="font-headline text-on-surface font-medium uppercase tracking-widest text-sm">Rechtliches</h4>
+                <div class="flex flex-col gap-3 text-sm text-on-surface-variant">
+                    <a class="hover:text-primary transition-colors" href="impressum.html">Impressum</a>
+                    <a class="hover:text-primary transition-colors" href="agb.html">AGB</a>
+                    <a class="hover:text-primary transition-colors" href="datenschutz.html">Datenschutz</a>
+                    <a class="hover:text-primary transition-colors" href="erstattung.html">Rückerstattung</a>
+                    <a class="hover:text-primary transition-colors" href="barrierefreiheit.html">Barrierefreiheit</a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-8 mt-20 pt-8 border-t border-outline-variant/10 flex flex-col md:flex-row justify-between gap-4 text-xs font-label uppercase tracking-widest text-[#E5E2E1]/30">
+            <p>© 2024 Feinstecher. Inh. Mohammad Alimardani & Cina Josef Pham. All rights reserved.</p>
+            <p>Built with Precision in Hamburg</p>
+        </div>
+    </footer>
+
+    <script type="module" src="/src/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-on-background font-body min-h-screen antialiased;
+    cursor: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg transform='rotate(-30 16 16)'%3E%3Cpath d='M8 4V6H20V4H8ZM7 6V20H9V6H7ZM9 18H21V20H9V18ZM12.5 20V28H15.5V20H12.5ZM13.5 28L14.5 32L15.5 28H13.5Z' fill='white' stroke='black' stroke-width='0.6'/%3E%3Crect x='10' y='6' width='3' height='8' fill='white' stroke='black' stroke-width='0.6'/%3E%3Crect x='16' y='6' width='3' height='8' fill='white' stroke='black' stroke-width='0.6'/%3E%3C/g%3E%3C/svg%3E") 8 30, auto;
+  }
+}
+
+a, button, [role="button"], .tier-card {
+  cursor: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg transform='rotate(-30 16 16)'%3E%3Cpath d='M8 4V6H20V4H8ZM7 6V20H9V6H7ZM9 18H21V20H9V18ZM12.5 20V28H15.5V20H12.5ZM13.5 28L14.5 32L15.5 28H13.5Z' fill='white' stroke='black' stroke-width='0.6'/%3E%3Crect x='10' y='6' width='3' height='8' fill='white' stroke='black' stroke-width='0.6'/%3E%3Crect x='16' y='6' width='3' height='8' fill='white' stroke='black' stroke-width='0.6'/%3E%3C/g%3E%3C/svg%3E") 8 32, pointer !important;
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-on-primary px-8 py-4 rounded font-label text-sm uppercase tracking-wider hover:bg-primary-container transition-all shadow-[0_20px_40px_rgba(0,178,178,0.15)] active:scale-95 flex items-center gap-2;
+  }
+
+  .btn-outline {
+    @apply border border-outline/40 text-on-surface px-8 py-4 rounded font-label text-sm uppercase tracking-wider hover:border-outline transition-all hover:bg-surface-container-low active:scale-95;
+  }
+}
+
+/* Scroll Video Hero Styles */
+#video-hero-container {
+  position: relative;
+  height: 300vh; /* Stretch to allow scrolling for video scrub */
+}
+
+#hero-video {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero-content-overlay {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.hero-content-overlay > * {
+  pointer-events: auto;
+}

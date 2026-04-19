@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="de" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGB - Feinstecher</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#5cd7e4",
+              "background": "#131313",
+              "on-background": "#e5e2e1",
+              "on-surface": "#e5e2e1",
+              "on-surface-variant": "#bcc9ca",
+              "surface-container-low": "#1c1b1b",
+              "surface-container-high": "#2a2a2a",
+              "outline-variant": "rgba(61, 73, 74, 0.4)"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk", "sans-serif"],
+              "body": ["Manrope", "sans-serif"]
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+        html, body {
+            cursor: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg transform='rotate(-30 16 16)'%3E%3Cpath d='M8 4V6H20V4H8ZM7 6V20H9V6H7ZM9 18H21V20H9V18ZM12.5 20V28H15.5V20H12.5ZM13.5 28L14.5 32L15.5 28H13.5Z' fill='white' stroke='black' stroke-width='0.6'/%3E%3Crect x='10' y='6' width='3' height='8' fill='white' stroke='black' stroke-width='0.6'/%3E%3Crect x='16' y='6' width='3' height='8' fill='white' stroke='black' stroke-width='0.6'/%3E%3C/g%3E%3C/svg%3E") 8 30, auto;
+        }
+        a, button, [role="button"] {
+            cursor: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg transform='rotate(-30 16 16)'%3E%3Cpath d='M8 4V6H20V4H8ZM7 6V20H9V6H7ZM9 18H21V20H9V18ZM12.5 20V28H15.5V20H12.5ZM13.5 28L14.5 32L15.5 28H13.5Z' fill='white' stroke='black' stroke-width='0.6'/%3E%3Crect x='10' y='6' width='3' height='8' fill='white' stroke='black' stroke-width='0.6'/%3E%3Crect x='16' y='6' width='3' height='8' fill='white' stroke='black' stroke-width='0.6'/%3E%3C/g%3E%3C/svg%3E") 8 32, pointer !important;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary/20 selection:text-primary">
+    
+    <nav class="fixed top-0 w-full z-50 bg-[#131313]/80 backdrop-blur-xl border-b border-white/5">
+        <div class="flex justify-between items-center h-20 px-8 max-w-7xl mx-auto">
+            <a href="index.html" class="relative group">
+                <div class="bg-white p-1.5 rounded-lg shadow-[0_0_15px_rgba(92,215,228,0.3)] group-hover:shadow-[0_0_20px_rgba(92,215,228,0.5)] transition-all duration-300 active:scale-95">
+                    <img src="feinstecherlogo.png" alt="Feinstecher Logo" class="h-8 md:h-10 w-auto mix-blend-multiply">
+                </div>
+            </a>
+            <div class="flex items-center gap-6">
+                <a href="https://www.instagram.com/feinstecher?igsh=MWR5NTczZnpta2lwbw==" target="_blank" class="text-[#E5E2E1]/70 hover:text-primary transition-all flex items-center gap-2 text-sm font-headline uppercase tracking-widest">
+                    <span class="material-symbols-outlined text-[18px]">photo_camera</span>
+                    Instagram
+                </a>
+                <a href="index.html" class="text-[#E5E2E1]/70 hover:text-primary transition-all flex items-center gap-2 text-sm font-headline uppercase tracking-widest">
+                    <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                    Zurück
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-40 pb-24 px-8 max-w-4xl mx-auto">
+        <header class="mb-16 border-l-4 border-primary pl-8">
+            <h1 class="font-headline text-5xl md:text-6xl font-bold tracking-tight mb-4 text-on-surface uppercase">AGB</h1>
+            <p class="text-primary font-headline tracking-[0.2em] uppercase text-sm">Allgemeine Geschäftsbedingungen</p>
+        </header>
+
+        <div class="space-y-12 text-on-surface-variant leading-relaxed">
+            <section class="bg-surface-container-low p-8 rounded border border-white/5">
+                <h2 class="text-on-surface font-headline text-2xl mb-4">1. Geltungsbereich</h2>
+                <p>Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Verträge zwischen <span class="text-on-surface font-semibold">Feinstecher GmbH</span>, Herderstraße 38, 22085 Hamburg, nachfolgend „Feinstecher“ genannt, und den Kunden, die unsere Arbeitsplätze (tage- oder monatsweise) mieten. Abweichende Bedingungen des Kunden gelten nur bei ausdrücklicher schriftlicher Zustimmung.</p>
+            </section>
+
+            <section class="bg-surface-container-low p-8 rounded border border-white/5">
+                <h2 class="text-on-surface font-headline text-2xl mb-4">2. Vertragsgegenstand</h2>
+                <p>Feinstecher stellt Artists professionelle Arbeitsplätze in einem Co-Working-Space zur Verfügung, die tage- oder monatsweise gemietet werden können. Die Buchung erfolgt online über unsere Website <a href="http://www.feinstecher.net" class="text-primary underline">www.feinstecher.net</a>. Die Arbeitsplätze umfassen eine Grundausstattung (z. B. Arbeitsfläche, Beleuchtung), weitere Leistungen sind nicht enthalten, sofern nicht ausdrücklich vereinbart.</p>
+            </section>
+
+            <section class="bg-surface-container-low p-8 rounded border border-white/5">
+                <h2 class="text-on-surface font-headline text-2xl mb-4">3. Buchung und Vertragsschluss</h2>
+                <div class="space-y-4">
+                    <p>3.1. Die Darstellung der Arbeitsplätze auf unserer Website stellt kein verbindliches Angebot dar, sondern eine Aufforderung zur Abgabe eines Angebots.</p>
+                    <p>3.2. Mit Absenden der Buchung gibt der Kunde ein verbindliches Angebot ab. Der Vertrag kommt zustande, wenn Feinstecher die Buchung per E-Mail bestätigt oder den Arbeitsplatz bereitstellt.</p>
+                    <p>3.3. Buchungen sind personengebunden und nicht übertragbar.</p>
+                </div>
+            </section>
+
+            <section class="bg-surface-container-low p-8 rounded border border-white/5">
+                <h2 class="text-on-surface font-headline text-2xl mb-4">4. Mietdauer und Kündigung</h2>
+                <div class="space-y-4">
+                    <p>4.1. Die Mietdauer richtet sich nach der Buchung (täglich oder monatlich). Tagesbuchungen enden automatisch am Ende des gebuchten Tages.</p>
+                    <p>4.2. Monatsbuchungen können mit einer Frist von <span class="text-on-surface font-semibold">14 Tagen zum Monatsende</span> schriftlich gekündigt werden.</p>
+                    <p>4.3. Feinstecher behält sich das Recht vor, den Vertrag fristlos aus wichtigem Grund zu kündigen.</p>
+                </div>
+            </section>
+
+            <section class="bg-surface-container-low p-8 rounded border border-white/5 font-headline">
+                <h2 class="text-on-surface text-2xl mb-4">Kontakt für Rückfragen</h2>
+                <p>E-Mail: <a href="mailto:feinstechergmbh@gmail.com" class="text-primary">feinstechergmbh@gmail.com</a></p>
+                <p>Adresse: Herderstraße 38, 22085 Hamburg</p>
+            </section>
+        </div>
+    </main>
+
+    <footer class="w-full py-16 bg-[#131313] border-t border-white/5 text-center">
+        <div class="max-w-7xl mx-auto px-8 flex flex-col items-center gap-6">
+            <div class="bg-white p-2 rounded-lg shadow-xl w-fit mx-auto mb-4">
+                <img src="feinstecherlogo.png" alt="Feinstecher Logo" class="h-10 w-auto mix-blend-multiply">
+            </div>
+            <p class="text-xs font-headline uppercase tracking-[0.3em] text-white/20">
+                © 2024 Feinstecher GmbH. Legal Terms & Conditions.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
