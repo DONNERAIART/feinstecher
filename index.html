@@ -60,13 +60,23 @@
             }, 'google_translate_element');
         }
 
-        // Keep the layout clean from Google's top bar
+        // Keep the layout clean from Google's top bar - Nuclear Version
         const observer = new MutationObserver(() => {
+            const bar = document.querySelector('.goog-te-banner-frame');
+            if (bar) {
+                bar.remove(); // Physically remove it
+            }
             if (document.body.style.top !== '0px') {
                 document.body.style.top = '0px';
             }
+            // Remove any other Google Translate UI elements
+            document.querySelectorAll('.skiptranslate').forEach(el => {
+                if (el.innerHTML.includes('google_translate_element') === false) {
+                    el.style.display = 'none';
+                }
+            });
         });
-        observer.observe(document.body, { attributes: true, attributeFilter: ['style'] });
+        observer.observe(document.documentElement, { attributes: true, childList: true, subtree: true });
     </script>
     <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -196,13 +206,20 @@
       .reveal-box:nth-child(3) .reveal-content { animation-delay: 0.8s; }
       .reveal-box:nth-child(4) .reveal-content { animation-delay: 0.9s; }
 
-      /* Hide Google Translate UI */
-      .goog-te-banner-frame { display: none !important; }
-      .goog-te-balloon-frame { display: none !important; }
+      /* Hide Google Translate UI - Nuclear CSS */
+      .goog-te-banner-frame, 
+      .goog-te-balloon-frame, 
+      .goog-te-gadget,
+      .goog-te-menu-value,
+      .goog-te-menu-frame,
+      .skiptranslate:not(#google_translate_element) { 
+        display: none !important; 
+      }
       body { top: 0 !important; }
       .goog-text-highlight { background: none !important; box-shadow: none !important; }
-      #goog-gt-tt { display: none !important; }
+      #goog-gt-tt, .goog-gt-tt { display: none !important; }
       .goog-te-spinner-pos { display: none !important; }
+      #google_translate_element { display: none !important; }
 
       /* Mobile Menu */
       #mobile-menu {
