@@ -13,6 +13,46 @@
     <!-- Google Translate Critical Init -->
     <div id="google_translate_element" style="display:none !important;"></div>
     <script>
+        window.LanguageService = {
+            changeLanguage: function(langCode) {
+                console.log("Language change requested:", langCode);
+                const langNames = { 'de': 'Deutsch', 'en': 'English', 'es': 'Español', 'fr': 'Français' };
+                const currentDisplays = document.querySelectorAll('#current-lang-name');
+                currentDisplays.forEach(el => el.innerText = langNames[langCode] || langCode);
+
+                if (langCode === 'de') {
+                    localStorage.setItem('feinstecher_lang', 'de');
+                    const cookies = ['googtrans', 'googtrans_ext'];
+                    const domains = [window.location.hostname, '.' + window.location.hostname];
+                    cookies.forEach(c => domains.forEach(d => {
+                        document.cookie = c + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + d;
+                        document.cookie = c + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                    }));
+                    window.location.reload();
+                    return;
+                }
+
+                const trigger = () => {
+                    const select = document.querySelector('.goog-te-combo');
+                    if (select) {
+                        select.value = langCode;
+                        select.dispatchEvent(new Event('change'));
+                        localStorage.setItem('feinstecher_lang', langCode);
+                        return true;
+                    }
+                    return false;
+                };
+
+                if (!trigger()) {
+                    let attempts = 0;
+                    const interval = setInterval(() => {
+                        attempts++;
+                        if (trigger() || attempts > 30) clearInterval(interval);
+                    }, 500);
+                }
+            }
+        };
+
         window.googleTranslateElementInit = function() {
             new google.translate.TranslateElement({
                 pageLanguage: 'de',
