@@ -10,15 +10,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
     
-    <!-- Google Translate Critical Init -->
+    <!-- Language & Cookie Services -->
     <div id="google_translate_element" style="display:none !important;"></div>
     <script>
         window.LanguageService = {
+            languages: [
+                { code: 'de', name: 'Deutsch' },
+                { code: 'en', name: 'English' },
+                { code: 'es', name: 'Español' },
+                { code: 'fr', name: 'Français' }
+            ],
             changeLanguage: function(langCode) {
-                console.log("Language change requested:", langCode);
-                const langNames = { 'de': 'Deutsch', 'en': 'English', 'es': 'Español', 'fr': 'Français' };
                 const currentDisplays = document.querySelectorAll('#current-lang-name');
-                currentDisplays.forEach(el => el.innerText = langNames[langCode] || langCode);
+                const langObj = this.languages.find(l => l.code === langCode);
+                if (langObj) currentDisplays.forEach(el => el.innerText = langObj.name);
 
                 if (langCode === 'de') {
                     localStorage.setItem('feinstecher_lang', 'de');

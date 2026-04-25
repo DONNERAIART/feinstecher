@@ -1,12 +1,8 @@
 import "../styles/main.css";
 import { initVideoScroll } from "./video-scroll.js";
 import { AuthService } from "./auth.js";
-import { LanguageService } from "./language.js";
-import { CookieService } from "./cookies.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-  CookieService.init();
-  window.LanguageService = LanguageService;
   initVideoScroll();
   initAuthUI();
   initLanguageUI();
@@ -54,7 +50,6 @@ function initHeroAnimations() {
 }
 
 function initLanguageUI() {
-  LanguageService.init();
   const langOptions = document.querySelectorAll('.lang-option, .lang-option-mobile');
   const currentLangDisplay = document.getElementById('current-lang-name');
 
@@ -62,7 +57,9 @@ function initLanguageUI() {
     opt.addEventListener('click', () => {
       const lang = opt.getAttribute('data-lang');
       const name = opt.innerText;
-      LanguageService.changeLanguage(lang);
+      if (window.LanguageService) {
+          window.LanguageService.changeLanguage(lang);
+      }
       if (currentLangDisplay) currentLangDisplay.innerText = name;
       
       // Close mobile menu if open
@@ -78,7 +75,7 @@ function initLanguageUI() {
 
   // Load saved language
   const savedLang = localStorage.getItem('feinstecher_lang') || 'de';
-  const savedLangObj = LanguageService.languages.find(l => l.code === savedLang);
+  const savedLangObj = (window.LanguageService?.languages || []).find(l => l.code === savedLang);
   if (savedLangObj && currentLangDisplay) {
     currentLangDisplay.innerText = savedLangObj.name;
   }
