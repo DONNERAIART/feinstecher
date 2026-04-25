@@ -227,33 +227,7 @@
         </div>
     </footer>
 
-    <script type="module">
-        import { LanguageService } from "src/js/language.js";
-        import { CookieService } from "src/js/cookies.js";
-
-        // Initialize Services
-        LanguageService.init();
-        CookieService.init();
-
-        const langOptions = document.querySelectorAll('.lang-option');
-        const currentLangDisplay = document.getElementById('current-lang-name');
-
-        langOptions.forEach(opt => {
-            opt.addEventListener('click', () => {
-                const lang = opt.getAttribute('data-lang');
-                const name = opt.innerText;
-                LanguageService.changeLanguage(lang);
-                if (currentLangDisplay) currentLangDisplay.innerText = name;
-            });
-        });
-
-        // Load saved language
-        const savedLang = localStorage.getItem('feinstecher_lang') || 'de';
-        const savedLangObj = LanguageService.languages.find(l => l.code === savedLang);
-        if (savedLangObj && currentLangDisplay) {
-            currentLangDisplay.innerText = savedLangObj.name;
-        }
-
+    <script type="module" src="/src/js/main.js"></script>
         // Simple UI script for tier selection
         const cards = document.querySelectorAll('.tier-card');
         const summaryName = document.getElementById('summary-tier-name');

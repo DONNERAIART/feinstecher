@@ -148,34 +148,10 @@
         </div>
     </main>
 
+    <script type="module" src="/src/js/main.js"></script>
     <script type="module">
-        import { AuthService } from "src/js/auth.js";
-        import { LanguageService } from "src/js/language.js";
-        import { CookieService } from "src/js/cookies.js";
-
-        // Initialize Services
-        LanguageService.init();
-        CookieService.init();
-
-        const langOptions = document.querySelectorAll('.lang-option');
-        const currentLangDisplay = document.getElementById('current-lang-name');
-
-        langOptions.forEach(opt => {
-            opt.addEventListener('click', () => {
-                const lang = opt.getAttribute('data-lang');
-                const name = opt.innerText;
-                LanguageService.changeLanguage(lang);
-                if (currentLangDisplay) currentLangDisplay.innerText = name;
-            });
-        });
-
-        // Load saved language
-        const savedLang = localStorage.getItem('feinstecher_lang') || 'de';
-        const savedLangObj = LanguageService.languages.find(l => l.code === savedLang);
-        if (savedLangObj && currentLangDisplay) {
-            currentLangDisplay.innerText = savedLangObj.name;
-        }
-
+        import { AuthService } from "/src/js/auth.js";
+        
         const form = document.getElementById('auth-form');
         const title = document.getElementById('auth-title');
         const subtitle = document.getElementById('auth-subtitle');
@@ -187,51 +163,59 @@
 
         let isLogin = true;
 
-        toggleBtn.addEventListener('click', () => {
-            isLogin = !isLogin;
-            title.innerText = isLogin ? 'Willkommen' : 'Registrieren';
-            subtitle.innerText = isLogin ? 'Logge dich ein, um deine Workstations zu verwalten.' : 'Erstelle einen Account für dein Feinstecher Profil.';
-            submitBtn.innerText = isLogin ? 'Einloggen' : 'Account erstellen';
-            toggleText.innerText = isLogin ? 'Noch keinen Account?' : 'Bereits einen Account?';
-            toggleBtn.innerText = isLogin ? 'Jetzt registrieren' : 'Hier einloggen';
-        });
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', () => {
+                isLogin = !isLogin;
+                title.innerText = isLogin ? 'Willkommen' : 'Registrieren';
+                subtitle.innerText = isLogin ? 'Logge dich ein, um deine Workstations zu verwalten.' : 'Erstelle einen Account für dein Feinstecher Profil.';
+                submitBtn.innerText = isLogin ? 'Einloggen' : 'Account erstellen';
+                toggleText.innerText = isLogin ? 'Noch keinen Account?' : 'Bereits einen Account?';
+                toggleBtn.innerText = isLogin ? 'Jetzt registrieren' : 'Hier einloggen';
+            });
+        }
 
         const errorDiv = document.getElementById('auth-error');
         const errorMsg = document.getElementById('auth-error-msg');
 
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
+        if (form) {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
 
-            errorDiv.classList.add('hidden');
+                errorDiv.classList.add('hidden');
 
-            let success = false;
-            if (isLogin) {
-                success = AuthService.login(email, password);
-                if (!success) {
-                    errorMsg.innerText = 'Falsches Passwort oder E-Mail unbekannt.';
-                    errorDiv.classList.remove('hidden');
-                    return;
+                let success = false;
+                if (isLogin) {
+                    success = AuthService.login(email, password);
+                    if (!success) {
+                        errorMsg.innerText = 'Falsches Passwort oder E-Mail unbekannt.';
+                        errorDiv.classList.remove('hidden');
+                        return;
+                    }
+                } else {
+                    success = AuthService.register(email, password);
                 }
-            } else {
-                success = AuthService.register(email, password);
-            }
-            
-            if (success) {
+                
+                if (success) {
+                    window.location.href = 'profile.html';
+                }
+            });
+        }
+
+        if (googleBtn) {
+            googleBtn.addEventListener('click', () => {
+                AuthService.socialLogin('Google');
                 window.location.href = 'profile.html';
-            }
-        });
+            });
+        }
 
-        googleBtn.addEventListener('click', () => {
-            AuthService.socialLogin('Google');
-            window.location.href = 'profile.html';
-        });
-
-        facebookBtn.addEventListener('click', () => {
-            AuthService.socialLogin('Facebook');
-            window.location.href = 'profile.html';
-        });
+        if (facebookBtn) {
+            facebookBtn.addEventListener('click', () => {
+                AuthService.socialLogin('Facebook');
+                window.location.href = 'profile.html';
+            });
+        }
 
         // Check if already logged in
         if (AuthService.isLoggedIn()) {

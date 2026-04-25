@@ -335,33 +335,9 @@
         </div>
     </div>
 
+    <script type="module" src="/src/js/main.js"></script>
     <script type="module">
-        import { AuthService } from "src/js/auth.js";
-        import { LanguageService } from "src/js/language.js";
-        import { CookieService } from "src/js/cookies.js";
-
-        // Initialize Services
-        LanguageService.init();
-        CookieService.init();
-
-        const langOptions = document.querySelectorAll('.lang-option');
-        const currentLangDisplay = document.getElementById('current-lang-name');
-
-        langOptions.forEach(opt => {
-            opt.addEventListener('click', () => {
-                const lang = opt.getAttribute('data-lang');
-                const name = opt.innerText;
-                LanguageService.changeLanguage(lang);
-                if (currentLangDisplay) currentLangDisplay.innerText = name;
-            });
-        });
-
-        // Load saved language
-        const savedLang = localStorage.getItem('feinstecher_lang') || 'de';
-        const savedLangObj = LanguageService.languages.find(l => l.code === savedLang);
-        if (savedLangObj && currentLangDisplay) {
-            currentLangDisplay.innerText = savedLangObj.name;
-        }
+        import { AuthService } from "/src/js/auth.js";
 
         // --- Helper: Notifications ---
         function showToast(message, icon = 'check_circle') {
@@ -442,23 +418,27 @@
         const avatarContainer = document.getElementById('avatar-container');
         const avatarUpload = document.getElementById('avatar-upload');
 
-        avatarContainer.addEventListener('click', () => {
-            avatarUpload.click();
-        });
+        if (avatarContainer) {
+            avatarContainer.addEventListener('click', () => {
+                avatarUpload.click();
+            });
+        }
 
-        avatarUpload.addEventListener('change', (e) => {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = (event) => {
-                    const base64Image = event.target.result;
-                    AuthService.updateUser({ avatar: base64Image });
-                    loadUserData();
-                    showToast('Profilbild aktualisiert');
-                };
-                reader.readAsDataURL(file);
-            }
-        });
+        if (avatarUpload) {
+            avatarUpload.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        const base64Image = event.target.result;
+                        AuthService.updateUser({ avatar: base64Image });
+                        loadUserData();
+                        showToast('Profilbild aktualisiert');
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
 
         // --- Tabs ---
         const tabs = document.querySelectorAll('.tab-link');
@@ -591,11 +571,6 @@
                 
                 content.classList.toggle('hidden');
                 icon.classList.toggle('rotate-180');
-                
-                // Show toast when toggling privacy options
-                if (!content.classList.contains('hidden')) {
-                    // Option opened
-                }
             });
         });
 
@@ -608,27 +583,28 @@
         // Logout
         document.getElementById('logout-btn-dropdown').addEventListener('click', () => {
             AuthService.logout();
+            window.location.href = 'login.html';
         });
 
         // Wallet Logic
         const addBtn = document.getElementById('add-payment-btn');
-        const form = document.getElementById('add-payment-form');
+        const walletForm = document.getElementById('add-payment-form');
         const cancelBtn = document.getElementById('cancel-payment-btn');
         const savePaymentBtn = document.getElementById('save-payment-btn');
 
         if (addBtn) addBtn.addEventListener('click', () => { 
-            form.classList.remove('hidden'); 
+            walletForm.classList.remove('hidden'); 
             addBtn.classList.add('hidden'); 
         });
 
         if (cancelBtn) cancelBtn.addEventListener('click', () => { 
-            form.classList.add('hidden'); 
+            walletForm.classList.add('hidden'); 
             addBtn.classList.remove('hidden'); 
         });
 
         if (savePaymentBtn) savePaymentBtn.addEventListener('click', () => {
             showToast('Zahlungsmethode hinzugefügt');
-            form.classList.add('hidden');
+            walletForm.classList.add('hidden');
             addBtn.classList.remove('hidden');
         });
     </script>
