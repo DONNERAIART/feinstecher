@@ -5,6 +5,7 @@ import { LanguageService } from "./language.js";
 import { CookieService } from "./cookies.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+  window.LanguageService = LanguageService;
   initVideoScroll();
   initAuthUI();
   initLanguageUI();

@@ -42,14 +42,14 @@ export const LanguageService = {
             const div = document.createElement('div');
             div.id = 'google_translate_element';
             div.style.display = 'none';
-            document.body.appendChild(div);
+            document.head.appendChild(div);
         }
 
         // Load the script if not already loaded
         if (!document.querySelector('script[src*="translate_a/element.js"]')) {
             const script = document.createElement('script');
             script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-            document.body.appendChild(script);
+            document.head.appendChild(script);
         }
     },
 
@@ -112,3 +112,5 @@ export const LanguageService = {
         }
     }
 };
+
+window.LanguageService = LanguageService;
