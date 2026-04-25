@@ -53,12 +53,26 @@
                 </div>
             </a>
             <div class="flex items-center gap-6">
+                <!-- Language Switcher -->
+                <div class="relative group hidden md:block">
+                    <button class="flex items-center gap-2 px-3 py-1.5 border border-white/10 rounded-sm text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:border-primary transition-all">
+                        <span id="current-lang-name">Deutsch</span>
+                        <span class="material-symbols-outlined notranslate text-[14px]">expand_more</span>
+                    </button>
+                    <div class="absolute right-0 mt-4 w-40 bg-surface-container-high border border-white/10 rounded-sm shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden">
+                        <button data-lang="de" class="lang-option w-full text-left px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all">Deutsch</button>
+                        <button data-lang="en" class="lang-option w-full text-left px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all">English</button>
+                        <button data-lang="es" class="lang-option w-full text-left px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all">Español</button>
+                        <button data-lang="fr" class="lang-option w-full text-left px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all">Français</button>
+                    </div>
+                </div>
+
                 <a href="https://www.instagram.com/feinstecher?igsh=MWR5NTczZnpta2lwbw==" target="_blank" class="text-[#E5E2E1]/70 hover:text-primary transition-all flex items-center gap-2 text-sm font-headline uppercase tracking-widest">
-                    <span class="material-symbols-outlined text-[18px]">photo_camera</span>
+                    <span class="material-symbols-outlined notranslate notranslate text-[18px]">photo_camera</span>
                     Instagram
                 </a>
                 <a href="index.html" class="text-[#E5E2E1]/70 hover:text-primary transition-all flex items-center gap-2 text-sm font-headline uppercase tracking-widest">
-                    <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                    <span class="material-symbols-outlined notranslate notranslate text-[18px]">arrow_back</span>
                     Abbrechen
                 </a>
             </div>
@@ -76,7 +90,7 @@
             <!-- Section 1: Tarif-Auswahl -->
             <section class="bg-surface-container-low p-8 rounded border border-white/5">
                 <h2 class="font-headline text-2xl mb-8 flex items-center gap-3 decoration-primary/30 underline underline-offset-8">
-                    <span class="material-symbols-outlined text-primary">payments</span>
+                    <span class="material-symbols-outlined notranslate text-primary">payments</span>
                     1. Tarif Wählen
                 </h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="tier-selector">
@@ -114,7 +128,7 @@
             <!-- Section 2: Dates -->
             <section class="bg-surface-container-low p-8 rounded border border-white/5">
                 <h2 class="font-headline text-2xl mb-8 flex items-center gap-3 decoration-primary/30 underline underline-offset-8">
-                    <span class="material-symbols-outlined text-primary">calendar_month</span>
+                    <span class="material-symbols-outlined notranslate text-primary">calendar_month</span>
                     2. Zeitraum & Artist Info
                 </h2>
                 <div class="space-y-8">
@@ -170,7 +184,7 @@
                     <label class="flex items-start gap-4 cursor-pointer mb-10 group">
                         <div class="relative flex items-center justify-center mt-1">
                             <input type="checkbox" class="peer appearance-none w-5 h-5 border border-white/20 rounded-sm checked:bg-primary checked:border-primary transition-all bg-[#131313]">
-                            <span class="material-symbols-outlined absolute text-[16px] text-on-primary opacity-0 peer-checked:opacity-100 pointer-events-none transition-all">check</span>
+                            <span class="material-symbols-outlined notranslate absolute text-[16px] text-on-primary opacity-0 peer-checked:opacity-100 pointer-events-none transition-all">check</span>
                         </div>
                         <span class="text-[11px] text-on-surface-variant leading-relaxed">
                             Ich habe die <a href="agb.html" class="text-primary hover:underline">AGB</a> gelesen und akzeptiere den Verzicht auf prozentuale Abgaben.
@@ -182,9 +196,9 @@
                     </button>
                     
                     <div class="flex justify-center gap-6 mt-8 opacity-30 grayscale contrast-125">
-                        <span class="material-symbols-outlined">credit_card</span>
-                        <span class="material-symbols-outlined">account_balance_wallet</span>
-                        <span class="material-symbols-outlined">shield</span>
+                        <span class="material-symbols-outlined notranslate">credit_card</span>
+                        <span class="material-symbols-outlined notranslate">account_balance_wallet</span>
+                        <span class="material-symbols-outlined notranslate">shield</span>
                     </div>
                 </div>
             </div>
@@ -201,7 +215,33 @@
         </div>
     </footer>
 
-    <script>
+    <script type="module">
+        import { LanguageService } from "./src/js/language.js";
+        import { CookieService } from "./src/js/cookies.js";
+
+        // Initialize Services
+        LanguageService.init();
+        CookieService.init();
+
+        const langOptions = document.querySelectorAll('.lang-option');
+        const currentLangDisplay = document.getElementById('current-lang-name');
+
+        langOptions.forEach(opt => {
+            opt.addEventListener('click', () => {
+                const lang = opt.getAttribute('data-lang');
+                const name = opt.innerText;
+                LanguageService.changeLanguage(lang);
+                if (currentLangDisplay) currentLangDisplay.innerText = name;
+            });
+        });
+
+        // Load saved language
+        const savedLang = localStorage.getItem('feinstecher_lang') || 'de';
+        const savedLangObj = LanguageService.languages.find(l => l.code === savedLang);
+        if (savedLangObj && currentLangDisplay) {
+            currentLangDisplay.innerText = savedLangObj.name;
+        }
+
         // Simple UI script for tier selection
         const cards = document.querySelectorAll('.tier-card');
         const summaryName = document.getElementById('summary-tier-name');

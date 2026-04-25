@@ -113,6 +113,19 @@
       #video-hero-container { position: relative; min-height: 100vh; overflow: hidden; background: #131313; }
       #hero-video { width: 100%; height: 100vh; object-fit: cover; opacity: 0.4; }
       .hero-content-overlay { position: absolute; inset: 0; display: flex; align-items: center; z-index: 10; }
+      
+      /* Initial state for hero animations - must be inline to prevent flicker */
+      .reveal-box { overflow: hidden; display: block; }
+      .reveal-content { 
+        opacity: 0; 
+        transform: translateY(100px); 
+        transition: transform 1.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: transform, opacity;
+      }
+      .hero-text-container.active .reveal-content {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
       /* Mobile Menu */
       #mobile-menu {
@@ -170,11 +183,33 @@
                 <a class="text-[#E5E2E1]/70 hover:text-primary transition-all" href="agb.html">AGB</a>
                 <a class="text-[#E5E2E1]/70 hover:text-primary transition-all" href="impressum.html">Impressum</a>
                 <a href="https://www.instagram.com/feinstecher?igsh=MWR5NTczZnpta2lwbw==" target="_blank" class="text-[#E5E2E1]/70 hover:text-primary transition-all flex items-center gap-1">
-                    <span class="material-symbols-outlined text-[20px]">photo_camera</span>
+                    <span class="material-symbols-outlined notranslate text-[20px]">photo_camera</span>
                     IG
                 </a>
             </div>
-            <div class="flex items-center gap-3">
+                <!-- Language Switcher -->
+                <div class="relative group ml-auto md:ml-0 mr-4">
+                    <button class="flex items-center gap-2 px-3 py-1.5 border border-white/10 rounded-sm text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:border-primary transition-all">
+                        <span id="current-lang-name">Deutsch</span>
+                        <span class="material-symbols-outlined notranslate text-[14px]">expand_more</span>
+                    </button>
+                    <div class="absolute right-0 mt-2 w-40 bg-surface-container-high border border-white/10 rounded-sm shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden">
+                        <button data-lang="de" class="lang-option w-full text-left px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all">Deutsch</button>
+                        <button data-lang="en" class="lang-option w-full text-left px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all">English</button>
+                        <button data-lang="es" class="lang-option w-full text-left px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all">Español</button>
+                        <button data-lang="fr" class="lang-option w-full text-left px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all">Français</button>
+                    </div>
+                </div>
+
+                <!-- Auth Button -->
+                <div id="auth-nav-container" class="hidden md:flex items-center gap-3">
+                    <a href="login.html" id="login-link" class="text-[#E5E2E1]/70 hover:text-primary transition-all text-sm font-label uppercase tracking-widest">
+                        Login
+                    </a>
+                    <a href="profile.html" id="profile-link" class="hidden text-[#E5E2E1]/70 hover:text-primary transition-all">
+                        <span class="material-symbols-outlined notranslate text-[28px]">account_circle</span>
+                    </a>
+                </div>
                 <a href="booking.html" class="hidden md:block bg-primary text-on-primary rounded font-label px-6 py-2 hover:opacity-80 transition-all active:scale-95 text-sm">
                     Book Now
                 </a>
@@ -183,7 +218,7 @@
                     Buchen
                 </a>
                 <button id="menu-toggle" class="md:hidden text-on-surface p-1" aria-label="Menu öffnen">
-                    <span class="material-symbols-outlined text-[28px]" id="menu-icon">menu</span>
+                    <span class="material-symbols-outlined notranslate text-[28px]" id="menu-icon">menu</span>
                 </button>
             </div>
         </div>
@@ -197,38 +232,62 @@
         <a href="impressum.html">Impressum</a>
         <a href="datenschutz.html">Datenschutz</a>
         <a href="https://www.instagram.com/feinstecher?igsh=MWR5NTczZnpta2lwbw==" target="_blank" class="flex items-center gap-2">
-            <span class="material-symbols-outlined">photo_camera</span> Instagram
+            <span class="material-symbols-outlined notranslate">photo_camera</span> Instagram
         </a>
-        <a href="booking.html" class="mt-4 bg-primary text-on-primary rounded px-8 py-4 text-base">Jetzt Buchen →</a>
+        <a href="login.html" class="auth-mobile-link">Login</a>
+        <a href="profile.html" class="auth-mobile-link hidden">Mein Account</a>
+        
+        <!-- Mobile Language Switcher -->
+        <div class="mt-8 pt-8 border-t border-white/10 w-full flex flex-col items-center gap-4">
+            <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-white/30">Sprache wählen</p>
+            <div class="flex gap-4">
+                <button data-lang="de" class="lang-option-mobile text-xs font-bold uppercase tracking-widest text-white/50 hover:text-primary transition-all">DE</button>
+                <button data-lang="en" class="lang-option-mobile text-xs font-bold uppercase tracking-widest text-white/50 hover:text-primary transition-all">EN</button>
+                <button data-lang="es" class="lang-option-mobile text-xs font-bold uppercase tracking-widest text-white/50 hover:text-primary transition-all">ES</button>
+                <button data-lang="fr" class="lang-option-mobile text-xs font-bold uppercase tracking-widest text-white/50 hover:text-primary transition-all">FR</button>
+            </div>
+        </div>
+
+        <a href="booking.html" class="mt-8 bg-primary text-on-primary rounded px-8 py-4 text-sm font-bold uppercase tracking-widest">Jetzt Buchen</a>
     </div>
 
     <main>
         <!-- Video Hero Section -->
-            <video id="hero-video" preload="auto" muted playsinline webkit-playsinline class="w-full h-full object-cover">
+        <section class="relative h-screen w-full overflow-hidden">
+            <video id="hero-video" preload="auto" muted playsinline webkit-playsinline class="absolute inset-0 w-full h-full object-cover">
                 <source src="feinstecher-promo.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
             
-            <div class="hero-content-overlay">
+            <div class="hero-content-overlay overflow-hidden">
                 <div class="max-w-7xl mx-auto px-4 md:px-8 w-full">
-                    <div class="md:w-3/5 space-y-5 md:space-y-8">
-                        <p class="font-label text-primary uppercase tracking-[0.3em] text-xs md:text-sm animate-pulse">Entering the Atelier</p>
+                    <div class="md:w-3/5 space-y-5 md:space-y-8 hero-text-container">
+                        <div class="reveal-box">
+                            <p class="font-label text-primary uppercase tracking-[0.3em] text-xs md:text-sm reveal-content">Entering the Atelier</p>
+                        </div>
+                        
                         <h1 class="font-headline text-[2.5rem] sm:text-[3.5rem] md:text-[5rem] leading-none font-bold tracking-[-0.04em] text-on-surface">
-                            DEIN PLATZ.<br/>
-                            <span class="text-primary/90">DEINE KUNST.</span><br/>
-                            DEINE FREIHEIT.
+                            <div class="reveal-box"><span class="reveal-content inline-block">DEIN PLATZ.</span></div>
+                            <div class="reveal-box"><span class="reveal-content inline-block text-primary/90">DEINE KUNST.</span></div>
+                            <div class="reveal-box"><span class="reveal-content inline-block">DEINE FREIHEIT.</span></div>
                         </h1>
-                        <p class="font-body text-base md:text-[1.375rem] font-semibold text-on-surface-variant max-w-xl leading-relaxed">
-                            Flexible Workstations für Tattoo-, PMU- und Piercing-Artists in Hamburg.
-                        </p>
-                        <div class="pt-2 flex flex-col sm:flex-row gap-3">
-                            <a href="booking.html" class="btn-primary">
-                                Jetzt Buchen
-                                <span class="material-symbols-outlined text-lg">arrow_forward</span>
-                            </a>
-                            <a href="#tarife" class="btn-outline text-center">
-                                Preise ansehen
-                            </a>
+
+                        <div class="reveal-box">
+                            <p class="font-body text-base md:text-[1.375rem] font-semibold text-on-surface-variant max-w-xl leading-relaxed reveal-content">
+                                Flexible Workstations für Tattoo-, PMU- und Piercing-Artists in Hamburg.
+                            </p>
+                        </div>
+
+                        <div class="pt-2 flex flex-col sm:flex-row gap-4 reveal-box">
+                            <div class="reveal-content flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+                                <a href="booking.html" class="btn-primary group">
+                                    Jetzt Buchen
+                                    <span class="material-symbols-outlined notranslate text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                                </a>
+                                <a href="#tarife" class="btn-outline text-center">
+                                    Preise ansehen
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -269,7 +328,7 @@
                     <!-- Feature 1 -->
                     <div class="bg-surface-container-low p-10 rounded group hover:bg-surface-container-high transition-colors relative overflow-hidden">
                         <div class="absolute bottom-0 left-0 w-full h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
-                        <span class="material-symbols-outlined text-4xl text-primary mb-6" style="font-variation-settings: 'wght' 200;">calendar_month</span>
+                        <span class="material-symbols-outlined notranslate text-4xl text-primary mb-6" style="font-variation-settings: 'wght' 200;">calendar_month</span>
                         <h3 class="font-headline text-xl font-medium mb-4">Flexible Raten</h3>
                         <p class="font-body text-on-surface-variant text-sm">
                             Tages-, Wochen- oder Monatsmiete. Du entscheidest, wann du arbeitest. Keine versteckten Kosten, volle Transparenz.
@@ -278,7 +337,7 @@
                     <!-- Feature 2 -->
                     <div class="bg-surface-container-low p-10 rounded group hover:bg-surface-container-high transition-colors relative overflow-hidden">
                         <div class="absolute bottom-0 left-0 w-full h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
-                        <span class="material-symbols-outlined text-4xl text-primary mb-6" style="font-variation-settings: 'wght' 200;">medical_services</span>
+                        <span class="material-symbols-outlined notranslate text-4xl text-primary mb-6" style="font-variation-settings: 'wght' 200;">medical_services</span>
                         <h3 class="font-headline text-xl font-medium mb-4">High-End Equipment</h3>
                         <p class="font-body text-on-surface-variant text-sm">
                             Medizinischer Standard. Voll ausgestattete Stationen mit hochwertigen Liegen, Beleuchtung und Sterilisationsbereichen.
@@ -287,7 +346,7 @@
                     <!-- Feature 3 -->
                     <div class="bg-surface-container-low p-10 rounded group hover:bg-surface-container-high transition-colors relative overflow-hidden">
                         <div class="absolute bottom-0 left-0 w-full h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
-                        <span class="material-symbols-outlined text-4xl text-primary mb-6" style="font-variation-settings: 'wght' 200;">location_on</span>
+                        <span class="material-symbols-outlined notranslate text-4xl text-primary mb-6" style="font-variation-settings: 'wght' 200;">location_on</span>
                         <h3 class="font-headline text-xl font-medium mb-4">Zentral in Hamburg</h3>
                         <p class="font-body text-on-surface-variant text-sm">
                             Perfekt erreichbar in Hamburg-Uhlenhorst für dich und deine Kunden. Ein repräsentativer Standort, der Vertrauen schafft.
@@ -324,7 +383,7 @@
                     <!-- Benefit 1 -->
                     <div class="space-y-4 group">
                         <div class="flex items-center justify-center md:justify-start gap-4 mb-2">
-                            <span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg group-hover:scale-110 transition-transform">calendar_today</span>
+                            <span class="material-symbols-outlined notranslate text-primary bg-primary/10 p-2 rounded-lg group-hover:scale-110 transition-transform">calendar_today</span>
                             <h4 class="font-headline font-bold text-on-surface text-lg uppercase tracking-tight">Buchung nach Bedarf</h4>
                         </div>
                         <p class="text-sm text-on-surface-variant/80 font-body leading-relaxed text-center md:text-left">
@@ -335,7 +394,7 @@
                     <!-- Benefit 2 -->
                     <div class="space-y-4 group">
                         <div class="flex items-center justify-center md:justify-start gap-4 mb-2">
-                            <span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg group-hover:scale-110 transition-transform">percent</span>
+                            <span class="material-symbols-outlined notranslate text-primary bg-primary/10 p-2 rounded-lg group-hover:scale-110 transition-transform">percent</span>
                             <h4 class="font-headline font-bold text-on-surface text-lg uppercase tracking-tight text-center md:text-left">Keine prozentualen Abgaben</h4>
                         </div>
                         <div class="flex items-start justify-center md:justify-start gap-2">
@@ -349,7 +408,7 @@
                     <!-- Benefit 3 -->
                     <div class="space-y-4 group">
                         <div class="flex items-center justify-center md:justify-start gap-4 mb-2">
-                            <span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg group-hover:scale-110 transition-transform">key</span>
+                            <span class="material-symbols-outlined notranslate text-primary bg-primary/10 p-2 rounded-lg group-hover:scale-110 transition-transform">key</span>
                             <h4 class="font-headline font-bold text-on-surface text-lg uppercase tracking-tight">Individueller Zugangscode</h4>
                         </div>
                         <div class="flex items-start justify-center md:justify-start gap-2">
@@ -468,7 +527,7 @@
                     Premium Co-Working Space für Tätowierer, PMU- und Piercing-Artists in Hamburg.
                 </p>
                 <a href="https://www.instagram.com/feinstecher?igsh=MWR5NTczZnpta2lwbw==" target="_blank" class="inline-flex items-center gap-2 text-sm text-on-surface-variant hover:text-primary transition-colors">
-                    <span class="material-symbols-outlined text-[20px]">photo_camera</span>
+                    <span class="material-symbols-outlined notranslate text-[20px]">photo_camera</span>
                     Instagram
                 </a>
             </div>

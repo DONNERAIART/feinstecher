@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="de" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feinstecher - Kontoeinstellungen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#5cd7e4",
+              "background": "#131313",
+              "on-background": "#e5e2e1",
+              "on-surface": "#e5e2e1",
+              "on-surface-variant": "#bcc9ca",
+              "surface-container": "#201f1f",
+              "surface-container-low": "#1c1b1b",
+              "surface-container-high": "#2a2a2a",
+              "surface-container-highest": "#353534",
+              "outline-variant": "rgba(61, 73, 74, 0.4)"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk", "sans-serif"],
+              "body": ["Manrope", "sans-serif"],
+              "label": ["Space Grotesk", "sans-serif"]
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+        html, body {
+            cursor: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg transform='rotate(-30 16 16)'%3E%3Cpath d='M8 4V6H20V4H8ZM7 6V20H9V6H7ZM9 18H21V20H9V18ZM12.5 20V28H15.5V20H12.5ZM13.5 28L14.5 32L15.5 28H13.5Z' fill='white' stroke='black' stroke-width='0.6'/%3E%3Crect x='10' y='6' width='3' height='8' fill='white' stroke='black' stroke-width='0.6'/%3E%3Crect x='16' y='6' width='3' height='8' fill='white' stroke='black' stroke-width='0.6'/%3E%3C/g%3E%3C/svg%3E") 8 30, auto;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary/20 selection:text-primary">
+    
+    <nav class="fixed top-0 w-full z-50 bg-[#131313]/80 backdrop-blur-xl border-b border-white/5">
+        <div class="flex justify-between items-center h-20 px-8 max-w-7xl mx-auto">
+            <a href="index.html" class="relative group">
+                <div class="bg-white p-1.5 rounded-lg shadow-[0_0_15px_rgba(92,215,228,0.3)] group-hover:shadow-[0_0_20px_rgba(92,215,228,0.5)] transition-all duration-300 active:scale-95">
+                    <img src="feinstecherlogo.png" alt="Feinstecher Logo" class="h-8 md:h-10 w-auto mix-blend-multiply">
+                </div>
+            </a>
+            
+            <div class="flex items-center gap-6">
+                <!-- Language Switcher -->
+                <div class="relative group hidden md:block">
+                    <button class="flex items-center gap-2 px-3 py-1.5 border border-white/10 rounded-sm text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:border-primary transition-all">
+                        <span id="current-lang-name">Deutsch</span>
+                        <span class="material-symbols-outlined notranslate text-[14px]">expand_more</span>
+                    </button>
+                    <div class="absolute right-0 mt-4 w-40 bg-surface-container-high border border-white/10 rounded-sm shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden">
+                        <button data-lang="de" class="lang-option w-full text-left px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all">Deutsch</button>
+                        <button data-lang="en" class="lang-option w-full text-left px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all">English</button>
+                        <button data-lang="es" class="lang-option w-full text-left px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all">Español</button>
+                        <button data-lang="fr" class="lang-option w-full text-left px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all">Français</button>
+                    </div>
+                </div>
+
+                <div class="relative group">
+                    <button class="flex items-center gap-2">
+                        <div id="header-avatar" class="w-8 h-8 bg-orange-600 rounded-full flex items-center justify-center text-white font-bold text-xs shadow-[0_0_10px_rgba(234,88,12,0.3)] overflow-hidden">
+                            <span id="header-avatar-initials">D</span>
+                            <img id="header-avatar-img" class="hidden w-full h-full object-cover">
+                        </div>
+                        <span class="material-symbols-outlined notranslate text-white/50 group-hover:text-primary transition-colors text-[18px]">expand_more</span>
+                    </button>
+                    <div class="absolute right-0 mt-4 w-56 bg-surface-container-high border border-white/10 rounded-sm shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden">
+                        <a href="profile.html" class="block px-6 py-3 text-xs font-bold uppercase tracking-widest text-primary border-b border-white/5 hover:bg-white/5">Account Settings</a>
+                        <a href="#" class="block px-6 py-3 text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:bg-white/5">My Bookings</a>
+                        <a href="#" class="block px-6 py-3 text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:bg-white/5">My Subscriptions</a>
+                        <a href="#" class="block px-6 py-3 text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:bg-white/5">My Orders</a>
+                        <a href="#" class="block px-6 py-3 text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:bg-white/5">Profil</a>
+                        <a href="#" class="block px-6 py-3 text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:bg-white/5">Veranstaltungen</a>
+                        <button id="logout-btn-dropdown" class="w-full text-left px-6 py-3 text-xs font-bold uppercase tracking-widest text-error hover:bg-white/5 border-t border-white/5">Abmelden</button>
+                    </div>
+                </div>
+
+                <div class="relative cursor-pointer">
+                    <span class="material-symbols-outlined notranslate text-primary text-[24px]">shopping_bag</span>
+                    <span class="absolute -top-1 -right-1 bg-primary text-on-primary text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="min-h-screen pt-32 pb-24 px-4 md:px-8 max-w-4xl mx-auto">
+        <header class="mb-12">
+            <h1 class="font-headline text-3xl md:text-4xl font-bold tracking-tight text-on-surface mb-8">Kontoeinstellungen</h1>
+            <div class="flex gap-8 border-b border-white/10 overflow-x-auto no-scrollbar">
+                <button data-tab="account" class="tab-link active px-2 py-4 text-xs font-bold uppercase tracking-widest border-b-2 border-primary text-primary whitespace-nowrap transition-all">My Account</button>
+                <button data-tab="wallet" class="tab-link px-2 py-4 text-xs font-bold uppercase tracking-widest border-b-2 border-transparent text-on-surface-variant hover:text-on-surface whitespace-nowrap transition-all">My Wallet</button>
+                <button data-tab="address" class="tab-link px-2 py-4 text-xs font-bold uppercase tracking-widest border-b-2 border-transparent text-on-surface-variant hover:text-on-surface whitespace-nowrap transition-all">My Addresses</button>
+            </div>
+        </header>
+
+        <!-- Tab: My Account -->
+        <div id="tab-account" class="tab-pane space-y-16">
+            <section class="space-y-8">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/5 pb-6">
+                    <div>
+                        <h2 class="font-headline text-2xl font-bold text-on-surface mb-1">Konto</h2>
+                        <p class="text-xs text-on-surface-variant">Hier können persönliche Angaben bearbeitet werden.</p>
+                    </div>
+                    <div class="flex gap-3">
+                        <button id="discard-btn" class="px-6 py-2 border border-white/10 text-[10px] font-bold uppercase tracking-widest hover:border-white/20 transition-all">Verwerfen</button>
+                        <button id="save-info-btn" class="px-6 py-2 bg-primary text-on-primary text-[10px] font-bold uppercase tracking-widest hover:opacity-90 transition-all">Info aktualisieren</button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+                    <div class="md:col-span-8 space-y-8">
+                        <div>
+                            <h3 class="font-headline text-lg font-bold text-on-surface mb-2">Info anzeigen</h3>
+                            <p class="text-[11px] text-on-surface-variant mb-6">Diese Informationen sind für alle Mitglieder dieser Website sichtbar.</p>
+                            <div class="space-y-6">
+                                <div>
+                                    <label class="block text-[10px] font-headline uppercase tracking-widest text-[#E5E2E1]/50 mb-2">Anzeigename *</label>
+                                    <input type="text" id="display-name" autocomplete="off" class="w-full bg-surface-container border border-white/10 rounded-sm p-3 text-on-surface focus:outline-none focus:border-primary transition-all">
+                                </div>
+                                <div>
+                                    <label class="block text-[10px] font-headline uppercase tracking-widest text-[#E5E2E1]/50 mb-2">Titel</label>
+                                    <input type="text" id="user-title" autocomplete="off" class="w-full bg-surface-container border border-white/10 rounded-sm p-3 text-on-surface focus:outline-none focus:border-primary transition-all">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:col-span-4 flex flex-col items-center justify-center pt-8 md:pt-0">
+                        <label class="block text-[10px] font-headline uppercase tracking-widest text-[#E5E2E1]/50 mb-4 self-start md:self-center">Profilbild <span class="material-symbols-outlined notranslate text-[14px] align-middle ml-1">info</span></label>
+                        <input type="file" id="avatar-upload" class="hidden" accept="image/*">
+                        <div id="avatar-container" class="w-32 h-32 bg-orange-600 rounded-full flex items-center justify-center text-white font-bold text-4xl shadow-2xl relative group cursor-pointer overflow-hidden">
+                            <span id="avatar-initials">D</span>
+                            <img id="avatar-img" class="hidden w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-black/40 rounded-full opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="material-symbols-outlined notranslate text-white">photo_camera</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-8 space-y-8 border-t border-white/5">
+                    <h3 class="font-headline text-lg font-bold text-on-surface mb-2">Persönliche Info</h3>
+                    <p class="text-[11px] text-on-surface-variant mb-8">Hier können persönliche Angaben geändert werden.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-[10px] font-headline uppercase tracking-widest text-[#E5E2E1]/50 mb-2">Vorname</label>
+                            <input type="text" id="first-name" autocomplete="off" class="w-full bg-surface-container border border-white/10 rounded-sm p-3 text-on-surface focus:outline-none focus:border-primary transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-headline uppercase tracking-widest text-[#E5E2E1]/50 mb-2">Nachname</label>
+                            <input type="text" id="last-name" autocomplete="off" class="w-full bg-surface-container border border-white/10 rounded-sm p-3 text-on-surface focus:outline-none focus:border-primary transition-all">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-[10px] font-headline uppercase tracking-widest text-[#E5E2E1]/50 mb-2">Telefonnummer</label>
+                            <input type="tel" id="phone" autocomplete="off" class="w-full bg-surface-container border border-white/10 rounded-sm p-3 text-on-surface focus:outline-none focus:border-primary transition-all" placeholder="+49 ...">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-12 border-t border-white/5">
+                    <h3 class="font-headline text-lg font-bold text-on-surface mb-2">Anmeldeinfo</h3>
+                    <p class="text-[11px] text-on-surface-variant mb-8">Hier können Anmelde-E-Mail-Adresse und Passwort angesehen und aktualisiert werden.</p>
+                    
+                    <div class="space-y-8">
+                        <div>
+                            <p class="text-[10px] font-headline uppercase tracking-widest text-[#E5E2E1]/50 mb-2">Anmelde-E-Mail-Adresse:</p>
+                            <div class="flex items-center justify-between gap-4" id="email-view">
+                                <p class="text-sm text-on-surface" id="login-email-display">user@example.com</p>
+                                <button id="btn-edit-email" class="text-[10px] font-bold uppercase tracking-widest text-primary hover:underline">E-Mail-Adresse ändern</button>
+                            </div>
+                            <div class="hidden flex items-center gap-3" id="email-edit">
+                                <input type="email" id="input-new-email" class="bg-surface-container border border-white/10 rounded-sm p-2 text-xs text-on-surface focus:outline-none focus:border-primary w-full max-w-xs">
+                                <button id="btn-save-email" class="text-[10px] font-bold uppercase tracking-widest text-primary">Speichern</button>
+                                <button id="btn-cancel-email" class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Abbrechen</button>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-headline uppercase tracking-widest text-[#E5E2E1]/50 mb-2">Passwort:</p>
+                            <div class="flex items-center justify-between gap-4" id="pass-view">
+                                <p class="text-sm tracking-[0.4em] text-white/50">● ● ● ● ● ●</p>
+                                <button id="btn-edit-pass" class="text-[10px] font-bold uppercase tracking-widest text-primary hover:underline">Passwort ändern</button>
+                            </div>
+                            <div class="hidden flex items-center gap-3" id="pass-edit">
+                                <input type="password" id="input-new-pass" class="bg-surface-container border border-white/10 rounded-sm p-2 text-xs text-on-surface focus:outline-none focus:border-primary w-full max-w-xs" placeholder="Neues Passwort">
+                                <button id="btn-save-pass" class="text-[10px] font-bold uppercase tracking-widest text-primary">Speichern</button>
+                                <button id="btn-cancel-pass" class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Abbrechen</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-12 border-t border-white/5 space-y-6">
+                    <h3 class="font-headline text-lg font-bold text-on-surface mb-2">Sichtbarkeit und Datenschutz</h3>
+                    <p class="text-[11px] text-on-surface-variant mb-6">Hier können persönliche Angaben geändert werden.</p>
+                    <div class="space-y-4">
+                        <div class="group border border-white/5 rounded-sm overflow-hidden">
+                            <button class="accordion-btn w-full flex items-center justify-between p-4 bg-surface-container-low hover:bg-surface-container transition-all text-left">
+                                <span class="text-xs font-bold uppercase tracking-widest">Profil-URL</span>
+                                <span class="material-symbols-outlined notranslate text-on-surface-variant text-[18px] transition-transform">expand_more</span>
+                            </button>
+                            <div class="accordion-content hidden p-6 bg-background/50 border-t border-white/5">
+                                <p class="text-[10px] font-headline uppercase tracking-widest text-[#E5E2E1]/50 mb-2">Deine Profil-URL:</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="text-xs text-primary bg-primary/5 px-3 py-2 rounded-sm" id="profile-url-display">https://feinstecher.net/profile/username</code>
+                                    <button class="material-symbols-outlined notranslate text-[18px] text-on-surface-variant hover:text-primary transition-colors">content_copy</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group border border-white/5 rounded-sm overflow-hidden">
+                            <button class="accordion-btn w-full flex items-center justify-between p-4 bg-surface-container-low hover:bg-surface-container transition-all text-left">
+                                <span class="text-xs font-bold uppercase tracking-widest">Profil privatsphäre</span>
+                                <span class="material-symbols-outlined notranslate text-on-surface-variant text-[18px] transition-transform">expand_more</span>
+                            </button>
+                            <div class="accordion-content hidden p-6 bg-background/50 border-t border-white/5">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="text-xs font-bold text-on-surface mb-1">Profil öffentlich sichtbar machen</p>
+                                        <p class="text-[10px] text-on-surface-variant">Andere können dein Profil unter deiner URL finden.</p>
+                                    </div>
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" id="privacy-toggle-real" class="sr-only peer" checked>
+                                        <div class="w-11 h-6 bg-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Tab: Wallet -->
+        <div id="tab-wallet" class="tab-pane hidden space-y-12">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
+                <div>
+                    <h2 class="font-headline text-2xl font-bold text-on-surface mb-1">My Wallet</h2>
+                    <p class="text-xs text-on-surface-variant">Verwalte dein Guthaben und deine Zahlungsmethoden.</p>
+                </div>
+                <div class="bg-primary/10 border border-primary/20 px-6 py-3 rounded-sm">
+                    <span class="text-[10px] uppercase tracking-widest text-on-surface-variant block mb-1">Guthaben</span>
+                    <span class="text-2xl font-headline font-bold text-on-surface">0,00€</span>
+                </div>
+            </div>
+
+            <div class="space-y-10">
+                <div>
+                    <h3 class="text-xs font-headline uppercase tracking-widest text-[#E5E2E1]/50 mb-6">Gespeicherte Zahlungsmethoden</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="payment-methods-list">
+                        <div class="group relative bg-background/50 border border-white/10 p-6 rounded-sm hover:border-primary/50 transition-all">
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="material-symbols-outlined notranslate text-primary">credit_card</span>
+                                <span class="text-[10px] bg-primary/10 text-primary px-2 py-0.5 rounded-full uppercase font-bold">Standard</span>
+                            </div>
+                            <p class="text-sm font-mono text-on-surface mb-1">•••• •••• •••• 4242</p>
+                            <p class="text-[10px] text-on-surface-variant uppercase tracking-widest">Visa | Exp: 12/26</p>
+                        </div>
+                        <button id="add-payment-btn" class="flex flex-col items-center justify-center gap-3 bg-white/5 border border-dashed border-white/20 p-6 rounded-sm hover:bg-white/10 hover:border-primary/50 transition-all group">
+                            <span class="material-symbols-outlined notranslate text-white/30 group-hover:text-primary transition-colors">add_circle</span>
+                            <span class="text-xs font-bold uppercase tracking-widest text-white/30 group-hover:text-white/70 transition-colors">Neue Methode</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="add-payment-form" class="hidden p-8 bg-surface-container-low rounded border border-primary/20">
+                    <div class="flex justify-between items-center mb-8">
+                        <h4 class="font-headline font-bold uppercase tracking-widest text-sm">Zahlungsmethode hinzufügen</h4>
+                        <button id="cancel-payment-btn" class="text-white/50 hover:text-white"><span class="material-symbols-outlined notranslate">close</span></button>
+                    </div>
+                    <form class="space-y-6">
+                        <div>
+                            <label class="block text-[10px] font-headline uppercase tracking-widest text-[#E5E2E1]/50 mb-2">Name auf der Karte</label>
+                            <input type="text" class="w-full bg-background border border-white/10 rounded-sm p-3 text-on-surface focus:outline-none focus:border-primary transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-headline uppercase tracking-widest text-[#E5E2E1]/50 mb-2">Kartennummer</label>
+                            <input type="text" class="w-full bg-background border border-white/10 rounded-sm p-3 text-on-surface focus:outline-none focus:border-primary transition-all">
+                        </div>
+                        <button type="button" id="save-payment-btn" class="w-full bg-primary text-on-primary font-headline font-bold uppercase tracking-widest py-4 rounded-sm">Speichern</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab: Address -->
+        <div id="tab-address" class="tab-pane hidden space-y-12">
+            <h2 class="font-headline text-2xl font-bold text-on-surface mb-8">My Addresses</h2>
+            <form id="address-form" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="md:col-span-2">
+                    <label class="block text-[10px] font-headline uppercase tracking-widest text-[#E5E2E1]/50 mb-2">Straße & Hausnummer</label>
+                    <input type="text" id="addr-street" class="w-full bg-background border border-white/10 rounded-sm p-3 text-on-surface focus:outline-none focus:border-primary transition-all">
+                </div>
+                <div>
+                    <label class="block text-[10px] font-headline uppercase tracking-widest text-[#E5E2E1]/50 mb-2">PLZ</label>
+                    <input type="text" id="addr-zip" class="w-full bg-background border border-white/10 rounded-sm p-3 text-on-surface focus:outline-none focus:border-primary transition-all">
+                </div>
+                <div>
+                    <label class="block text-[10px] font-headline uppercase tracking-widest text-[#E5E2E1]/50 mb-2">Stadt</label>
+                    <input type="text" id="addr-city" class="w-full bg-background border border-white/10 rounded-sm p-3 text-on-surface focus:outline-none focus:border-primary transition-all">
+                </div>
+                <div class="md:col-span-2 pt-4">
+                    <button type="submit" class="bg-primary text-on-primary font-headline font-bold uppercase tracking-widest py-3 px-8 rounded-sm text-xs hover:opacity-90 transition-all">Adresse Speichern</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-8 right-8 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="bg-surface-container-highest border border-primary/30 px-6 py-4 rounded-sm shadow-2xl flex items-center gap-3">
+            <span class="material-symbols-outlined notranslate text-primary" id="toast-icon">check_circle</span>
+            <span class="text-xs font-bold uppercase tracking-widest text-on-surface" id="toast-message">Erfolgreich gespeichert</span>
+        </div>
+    </div>
+
+    <script type="module">
+        import { AuthService } from "./src/js/auth.js";
+        import { LanguageService } from "./src/js/language.js";
+        import { CookieService } from "./src/js/cookies.js";
+
+        // Initialize Services
+        LanguageService.init();
+        CookieService.init();
+
+        const langOptions = document.querySelectorAll('.lang-option');
+        const currentLangDisplay = document.getElementById('current-lang-name');
+
+        langOptions.forEach(opt => {
+            opt.addEventListener('click', () => {
+                const lang = opt.getAttribute('data-lang');
+                const name = opt.innerText;
+                LanguageService.changeLanguage(lang);
+                if (currentLangDisplay) currentLangDisplay.innerText = name;
+            });
+        });
+
+        // Load saved language
+        const savedLang = localStorage.getItem('feinstecher_lang') || 'de';
+        const savedLangObj = LanguageService.languages.find(l => l.code === savedLang);
+        if (savedLangObj && currentLangDisplay) {
+            currentLangDisplay.innerText = savedLangObj.name;
+        }
+
+        // --- Helper: Notifications ---
+        function showToast(message, icon = 'check_circle') {
+            const toast = document.getElementById('toast');
+            const msgEl = document.getElementById('toast-message');
+            const iconEl = document.getElementById('toast-icon');
+            
+            msgEl.innerText = message;
+            iconEl.innerText = icon;
+            
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+                toast.classList.remove('translate-y-0', 'opacity-100');
+            }, 3000);
+        }
+
+        // --- Initial State ---
+        if (!AuthService.isLoggedIn()) {
+            window.location.href = 'login.html';
+        }
+
+        function loadUserData() {
+            const user = AuthService.getUser();
+            if (!user) return;
+
+            // Info Anzeigen
+            document.getElementById('display-name').value = user.displayName || '';
+            document.getElementById('user-title').value = user.title || '';
+            
+            // Persönliche Info
+            document.getElementById('first-name').value = user.firstName || '';
+            document.getElementById('last-name').value = user.lastName || '';
+            document.getElementById('phone').value = user.phone || '';
+            
+            // Anmeldeinfo
+            document.getElementById('login-email-display').innerText = user.email;
+            document.getElementById('profile-url-display').innerText = user.profileUrl;
+
+            // Avatar Handling
+            const initials = (user.displayName || user.email).charAt(0).toUpperCase();
+            document.getElementById('avatar-initials').innerText = initials;
+            document.getElementById('header-avatar-initials').innerText = initials;
+
+            if (user.avatar) {
+                const avatarImg = document.getElementById('avatar-img');
+                const headerAvatarImg = document.getElementById('header-avatar-img');
+                const avatarInitials = document.getElementById('avatar-initials');
+                const headerAvatarInitials = document.getElementById('header-avatar-initials');
+
+                avatarImg.src = user.avatar;
+                avatarImg.classList.remove('hidden');
+                avatarInitials.classList.add('hidden');
+
+                headerAvatarImg.src = user.avatar;
+                headerAvatarImg.classList.remove('hidden');
+                headerAvatarInitials.classList.add('hidden');
+            } else {
+                document.getElementById('avatar-img').classList.add('hidden');
+                document.getElementById('avatar-initials').classList.remove('hidden');
+                document.getElementById('header-avatar-img').classList.add('hidden');
+                document.getElementById('header-avatar-initials').classList.remove('hidden');
+            }
+
+            // Address Tab
+            if (user.address) {
+                document.getElementById('addr-street').value = user.address.street || '';
+                document.getElementById('addr-zip').value = user.address.zip || '';
+                document.getElementById('addr-city').value = user.address.city || '';
+            }
+        }
+
+        loadUserData();
+
+        // --- Avatar Upload ---
+        const avatarContainer = document.getElementById('avatar-container');
+        const avatarUpload = document.getElementById('avatar-upload');
+
+        avatarContainer.addEventListener('click', () => {
+            avatarUpload.click();
+        });
+
+        avatarUpload.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    const base64Image = event.target.result;
+                    AuthService.updateUser({ avatar: base64Image });
+                    loadUserData();
+                    showToast('Profilbild aktualisiert');
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // --- Tabs ---
+        const tabs = document.querySelectorAll('.tab-link');
+        const panes = document.querySelectorAll('.tab-pane');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const target = tab.getAttribute('data-tab');
+                
+                tabs.forEach(t => {
+                    t.classList.remove('active', 'border-primary', 'text-primary');
+                    t.classList.add('border-transparent', 'text-on-surface-variant');
+                });
+                tab.classList.add('active', 'border-primary', 'text-primary');
+                tab.classList.remove('border-transparent', 'text-on-surface-variant');
+
+                panes.forEach(p => {
+                    if (p.id === `tab-${target}`) p.classList.remove('hidden');
+                    else p.classList.add('hidden');
+                });
+            });
+        });
+
+        // --- Profile Actions ---
+        
+        // Update Info
+        document.getElementById('save-info-btn').addEventListener('click', () => {
+            const updated = AuthService.updateUser({
+                displayName: document.getElementById('display-name').value,
+                title: document.getElementById('user-title').value,
+                firstName: document.getElementById('first-name').value,
+                lastName: document.getElementById('last-name').value,
+                phone: document.getElementById('phone').value
+            });
+            
+            if (updated) {
+                // Update dynamic displays
+                document.getElementById('profile-url-display').innerText = updated.profileUrl;
+                showToast('Profil wurde aktualisiert');
+            }
+        });
+
+        // Discard
+        document.getElementById('discard-btn').addEventListener('click', () => {
+            loadUserData();
+            const user = AuthService.getUser();
+            document.getElementById('profile-url-display').innerText = user.profileUrl;
+            showToast('Änderungen verworfen', 'restart_alt');
+        });
+
+        // Change Email
+        const emailView = document.getElementById('email-view');
+        const emailEdit = document.getElementById('email-edit');
+        const inputNewEmail = document.getElementById('input-new-email');
+
+        document.getElementById('btn-edit-email').addEventListener('click', () => {
+            const user = AuthService.getUser();
+            inputNewEmail.value = user.email;
+            emailView.classList.add('hidden');
+            emailEdit.classList.remove('hidden');
+            inputNewEmail.focus();
+        });
+
+        document.getElementById('btn-cancel-email').addEventListener('click', () => {
+            emailView.classList.remove('hidden');
+            emailEdit.classList.add('hidden');
+        });
+
+        document.getElementById('btn-save-email').addEventListener('click', () => {
+            const newEmail = inputNewEmail.value;
+            if (newEmail && newEmail.includes('@')) {
+                const updated = AuthService.updateUser({ email: newEmail });
+                if (updated) {
+                    document.getElementById('login-email-display').innerText = updated.email;
+                    emailView.classList.remove('hidden');
+                    emailEdit.classList.add('hidden');
+                    showToast('E-Mail-Adresse geändert');
+                }
+            }
+        });
+
+        // Change Password
+        const passView = document.getElementById('pass-view');
+        const passEdit = document.getElementById('pass-edit');
+        const inputNewPass = document.getElementById('input-new-pass');
+
+        document.getElementById('btn-edit-pass').addEventListener('click', () => {
+            passView.classList.add('hidden');
+            passEdit.classList.remove('hidden');
+            inputNewPass.focus();
+        });
+
+        document.getElementById('btn-cancel-pass').addEventListener('click', () => {
+            passView.classList.remove('hidden');
+            passEdit.classList.add('hidden');
+        });
+
+        document.getElementById('btn-save-pass').addEventListener('click', () => {
+            const newPass = inputNewPass.value;
+            if (newPass && newPass.length >= 6) {
+                AuthService.updateUser({ password: newPass });
+                passView.classList.remove('hidden');
+                passEdit.classList.add('hidden');
+                inputNewPass.value = '';
+                showToast('Passwort erfolgreich geändert');
+            } else if (newPass) {
+                alert('Das Passwort ist zu kurz (mind. 6 Zeichen).');
+            }
+        });
+
+        // Address Saving
+        document.getElementById('address-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            AuthService.updateUser({
+                address: {
+                    street: document.getElementById('addr-street').value,
+                    zip: document.getElementById('addr-zip').value,
+                    city: document.getElementById('addr-city').value
+                }
+            });
+            showToast('Adresse gespeichert');
+        });
+
+        // --- Visibility Accordions ---
+        const accordionBtns = document.querySelectorAll('.accordion-btn');
+        accordionBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const content = btn.nextElementSibling;
+                const icon = btn.querySelector('.material-symbols-outlined');
+                
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+                
+                // Show toast when toggling privacy options
+                if (!content.classList.contains('hidden')) {
+                    // Option opened
+                }
+            });
+        });
+
+        // Privacy Toggle (Inside Accordion)
+        document.getElementById('privacy-toggle-real')?.addEventListener('change', (e) => {
+            AuthService.updateUser({ isPrivate: !e.target.checked });
+            showToast(e.target.checked ? 'Profil ist jetzt öffentlich' : 'Profil ist jetzt privat');
+        });
+
+        // Logout
+        document.getElementById('logout-btn-dropdown').addEventListener('click', () => {
+            AuthService.logout();
+        });
+
+        // Wallet Logic
+        const addBtn = document.getElementById('add-payment-btn');
+        const form = document.getElementById('add-payment-form');
+        const cancelBtn = document.getElementById('cancel-payment-btn');
+        const savePaymentBtn = document.getElementById('save-payment-btn');
+
+        if (addBtn) addBtn.addEventListener('click', () => { 
+            form.classList.remove('hidden'); 
+            addBtn.classList.add('hidden'); 
+        });
+
+        if (cancelBtn) cancelBtn.addEventListener('click', () => { 
+            form.classList.add('hidden'); 
+            addBtn.classList.remove('hidden'); 
+        });
+
+        if (savePaymentBtn) savePaymentBtn.addEventListener('click', () => {
+            showToast('Zahlungsmethode hinzugefügt');
+            form.classList.add('hidden');
+            addBtn.classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>

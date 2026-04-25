@@ -1,6 +1,65 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@config "../../tailwind.config.js";
+
+/* Absolute Hiding of Google Translate UI */
+.skiptranslate, 
+iframe[id*="google_translate"], 
+.goog-te-banner-frame,
+#goog-gt-tt,
+.goog-te-balloon-frame,
+.goog-te-menu-frame {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+}
+
+body {
+    top: 0 !important;
+    position: static !important;
+}
+
+/* Ensure original text is visible when reverting */
+font {
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+/* Ensure icons don't get translated */
+.material-symbols-outlined {
+    unicode-bidi: isolate;
+    @apply notranslate;
+}
+
+/* Premium Text Reveal Animation */
+.reveal-box {
+    overflow: hidden;
+    display: block;
+}
+
+.reveal-content {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: transform 1.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+}
+
+.hero-text-container.active .reveal-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered Delays */
+.hero-text-container.active .reveal-box:nth-child(1) .reveal-content { transition-delay: 0.1s; }
+.hero-text-container.active h1 .reveal-box:nth-child(1) .reveal-content { transition-delay: 0.2s; }
+.hero-text-container.active h1 .reveal-box:nth-child(2) .reveal-content { transition-delay: 0.35s; }
+.hero-text-container.active h1 .reveal-box:nth-child(3) .reveal-content { transition-delay: 0.5s; }
+.hero-text-container.active .reveal-box:nth-child(3) .reveal-content { transition-delay: 0.7s; } /* Description */
+.hero-text-container.active .reveal-box:nth-child(4) .reveal-content { transition-delay: 0.8s; } /* Buttons */
+
+/* Parallax Background Effect */
+#hero-video {
+    will-change: transform;
+    transition: transform 0.1s linear; /* Smooth out parallax */
+}
 
 @layer base {
   body {
