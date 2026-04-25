@@ -4,13 +4,16 @@
  */
 
 export const CookieService = {
-    storageKey: 'feinstecher_cookie_consent',
+    storageKey: 'feinstecher_cookie_consent_v2',
 
     init() {
+        console.log("CookieService initializing...");
         this.createToggleButton();
         if (!localStorage.getItem(this.storageKey)) {
+            console.log("No consent found, showing banner");
             this.showBanner();
         } else {
+            console.log("Consent found, showing toggle");
             this.showToggleButton();
         }
     },

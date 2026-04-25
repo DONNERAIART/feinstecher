@@ -5,12 +5,13 @@ import { LanguageService } from "./language.js";
 import { CookieService } from "./cookies.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+  CookieService.init();
   window.LanguageService = LanguageService;
   initVideoScroll();
   initAuthUI();
   initLanguageUI();
   initHeroAnimations();
-  CookieService.init();
+});
 
   // Mobile Menu Logic
   const toggle = document.getElementById('menu-toggle');
