@@ -7,12 +7,51 @@ export const CookieService = {
     storageKey: 'feinstecher_cookie_consent',
 
     init() {
+        this.createToggleButton();
         if (!localStorage.getItem(this.storageKey)) {
             this.showBanner();
+        } else {
+            this.showToggleButton();
+        }
+    },
+
+    createToggleButton() {
+        if (document.getElementById('cookie-settings-toggle')) return;
+        
+        const btn = document.createElement('button');
+        btn.id = 'cookie-settings-toggle';
+        btn.className = 'fixed bottom-6 left-6 w-10 h-10 bg-surface-container-highest border border-white/10 rounded-full flex items-center justify-center text-primary shadow-2xl z-[90] transform scale-0 transition-all duration-500 hover:scale-110 hover:border-primary active:scale-90 opacity-0 invisible';
+        btn.innerHTML = `
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2V6M12 6L9 10M12 6L15 10M12 22V17M10 17H14V22H10V17Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M7 6H17V15H7V6Z" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+        `;
+        btn.onclick = () => {
+            this.hideToggleButton();
+            this.showBanner();
+        };
+        document.body.appendChild(btn);
+    },
+
+    showToggleButton() {
+        const btn = document.getElementById('cookie-settings-toggle');
+        if (btn) {
+            btn.classList.remove('scale-0', 'opacity-0', 'invisible');
+            btn.classList.add('scale-100', 'opacity-100');
+        }
+    },
+
+    hideToggleButton() {
+        const btn = document.getElementById('cookie-settings-toggle');
+        if (btn) {
+            btn.classList.add('scale-0', 'opacity-0', 'invisible');
+            btn.classList.remove('scale-100', 'opacity-100');
         }
     },
 
     showBanner() {
+        this.hideToggleButton();
         const banner = document.createElement('div');
         banner.id = 'cookie-consent-banner';
         banner.className = 'fixed bottom-0 left-0 right-0 md:bottom-8 md:right-8 md:left-auto md:max-w-md bg-surface-container-highest border-t md:border border-primary/20 p-6 md:rounded-sm shadow-2xl z-[100] transform translate-y-full opacity-0 transition-all duration-500';
@@ -77,11 +116,9 @@ export const CookieService = {
         const icon = document.getElementById('tattoo-machine-icon');
         const button = document.getElementById('accept-all-cookies');
         
-        // Visual buzz
         icon.classList.add('buzz-active');
         button.classList.add('buzz-active');
 
-        // Ink drops
         for (let i = 0; i < 15; i++) {
             setTimeout(() => {
                 const drop = document.createElement('div');
@@ -114,7 +151,10 @@ export const CookieService = {
         const banner = document.getElementById('cookie-consent-banner');
         if (banner) {
             banner.classList.add('translate-y-full', 'opacity-0');
-            setTimeout(() => banner.remove(), 500);
+            setTimeout(() => {
+                banner.remove();
+                this.showToggleButton();
+            }, 500);
         }
     }
 };
