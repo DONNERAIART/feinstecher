@@ -34,15 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function initHeroAnimations() {
-  const heroText = document.querySelector('.hero-text-container');
   const heroVideo = document.getElementById('hero-video');
-  
-  if (heroText) {
-    // Trigger entrance animation
-    setTimeout(() => {
-      heroText.classList.add('active');
-    }, 100);
-  }
+  const isMobile = window.innerWidth < 768;
 
   if (heroVideo) {
     window.addEventListener('scroll', () => {
