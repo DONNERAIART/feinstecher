@@ -12,6 +12,14 @@ export const LanguageService = {
     ],
 
     init() {
+        // Define the callback globally immediately
+        window.googleTranslateElementInit = () => {
+            new window.google.translate.TranslateElement({
+                pageLanguage: 'de',
+                autoDisplay: false
+            }, 'google_translate_element');
+        };
+
         this.loadGoogleTranslate();
         this.hideGoogleBar();
     },
@@ -36,14 +44,6 @@ export const LanguageService = {
             div.style.display = 'none';
             document.body.appendChild(div);
         }
-
-        // Define the callback globally
-        window.googleTranslateElementInit = () => {
-            new window.google.translate.TranslateElement({
-                pageLanguage: 'de',
-                autoDisplay: false
-            }, 'google_translate_element');
-        };
 
         // Load the script if not already loaded
         if (!document.querySelector('script[src*="translate_a/element.js"]')) {
