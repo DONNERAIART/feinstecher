@@ -54,6 +54,13 @@ export const LanguageService = {
     },
 
     changeLanguage(langCode) {
+        console.log("Changing language to:", langCode);
+        
+        // Update UI text immediately if possible
+        const langNames = { 'de': 'Deutsch', 'en': 'English', 'es': 'Español', 'fr': 'Français' };
+        const currentLangDisplays = document.querySelectorAll('#current-lang-name');
+        currentLangDisplays.forEach(el => el.innerText = langNames[langCode] || langCode);
+
         const triggerTranslation = () => {
             if (langCode === 'de') {
                 this.resetTranslation();
@@ -71,10 +78,11 @@ export const LanguageService = {
         };
 
         if (!triggerTranslation()) {
+            console.log("Translation engine not ready, retrying...");
             let attempts = 0;
             const interval = setInterval(() => {
                 attempts++;
-                if (triggerTranslation() || attempts > 20) {
+                if (triggerTranslation() || attempts > 30) {
                     clearInterval(interval);
                 }
             }, 500);

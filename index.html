@@ -215,10 +215,10 @@
                         <span class="material-symbols-outlined notranslate text-[14px]">expand_more</span>
                     </button>
                     <div class="absolute right-0 mt-2 w-40 bg-surface-container-high border border-white/10 rounded-sm shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden">
-                        <button data-lang="de" class="lang-option w-full text-left px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all">Deutsch</button>
-                        <button data-lang="en" class="lang-option w-full text-left px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all">English</button>
-                        <button data-lang="es" class="lang-option w-full text-left px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all">Español</button>
-                        <button data-lang="fr" class="lang-option w-full text-left px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all">Français</button>
+                        <button data-lang="de" onclick="window.LanguageService.changeLanguage('de')" class="lang-option w-full text-left px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all">Deutsch</button>
+                        <button data-lang="en" onclick="window.LanguageService.changeLanguage('en')" class="lang-option w-full text-left px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all">English</button>
+                        <button data-lang="es" onclick="window.LanguageService.changeLanguage('es')" class="lang-option w-full text-left px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all">Español</button>
+                        <button data-lang="fr" onclick="window.LanguageService.changeLanguage('fr')" class="lang-option w-full text-left px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all">Français</button>
                     </div>
                 </div>
 
@@ -262,10 +262,10 @@
         <div class="mt-8 pt-8 border-t border-white/10 w-full flex flex-col items-center gap-4">
             <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-white/30">Sprache wählen</p>
             <div class="flex gap-4">
-                <button data-lang="de" class="lang-option-mobile text-xs font-bold uppercase tracking-widest text-white/50 hover:text-primary transition-all">DE</button>
-                <button data-lang="en" class="lang-option-mobile text-xs font-bold uppercase tracking-widest text-white/50 hover:text-primary transition-all">EN</button>
-                <button data-lang="es" class="lang-option-mobile text-xs font-bold uppercase tracking-widest text-white/50 hover:text-primary transition-all">ES</button>
-                <button data-lang="fr" class="lang-option-mobile text-xs font-bold uppercase tracking-widest text-white/50 hover:text-primary transition-all">FR</button>
+                <button data-lang="de" onclick="window.LanguageService.changeLanguage('de')" class="lang-option-mobile text-xs font-bold uppercase tracking-widest text-white/50 hover:text-primary transition-all">DE</button>
+                <button data-lang="en" onclick="window.LanguageService.changeLanguage('en')" class="lang-option-mobile text-xs font-bold uppercase tracking-widest text-white/50 hover:text-primary transition-all">EN</button>
+                <button data-lang="es" onclick="window.LanguageService.changeLanguage('es')" class="lang-option-mobile text-xs font-bold uppercase tracking-widest text-white/50 hover:text-primary transition-all">ES</button>
+                <button data-lang="fr" onclick="window.LanguageService.changeLanguage('fr')" class="lang-option-mobile text-xs font-bold uppercase tracking-widest text-white/50 hover:text-primary transition-all">FR</button>
             </div>
         </div>
 
