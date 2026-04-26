@@ -461,9 +461,6 @@
             </a>
             <div class="hidden md:flex gap-8 items-center font-headline tracking-tight">
                 <a class="text-primary border-b-2 border-primary pb-1 hover:opacity-80 transition-all" href="index.html">Home</a>
-                <a class="text-[#E5E2E1]/70 hover:text-primary transition-all" href="booking.html">Stations</a>
-                <a class="text-[#E5E2E1]/70 hover:text-primary transition-all" href="agb.html">AGB</a>
-                <a class="text-[#E5E2E1]/70 hover:text-primary transition-all" href="impressum.html">Impressum</a>
                 <a href="https://www.instagram.com/feinstecher?igsh=MWR5NTczZnpta2lwbw==" target="_blank" class="text-[#E5E2E1]/70 hover:text-primary transition-all flex items-center gap-1">
                     <span class="material-symbols-outlined notranslate text-[20px]">photo_camera</span>
                     IG
@@ -492,13 +489,6 @@
                         <span class="material-symbols-outlined notranslate text-[28px]">account_circle</span>
                     </a>
                 </div>
-                <a href="booking.html" class="hidden md:block bg-primary text-on-primary rounded font-label px-6 py-2 hover:opacity-80 transition-all active:scale-95 text-sm">
-                    Book Now
-                </a>
-                <!-- Mobile: Book Now Button + Menu Toggle -->
-                <a href="booking.html" class="md:hidden bg-primary text-on-primary rounded font-label px-4 py-2 text-xs font-bold uppercase tracking-wide active:scale-95">
-                    Buchen
-                </a>
                 <button id="menu-toggle" class="md:hidden text-on-surface p-1" aria-label="Menu öffnen">
                     <span class="material-symbols-outlined notranslate text-[28px]" id="menu-icon">menu</span>
                 </button>
@@ -509,10 +499,6 @@
     <!-- Mobile Fullscreen Menu -->
     <div id="mobile-menu" role="dialog" aria-modal="true">
         <a href="index.html" class="active">Home</a>
-        <a href="booking.html">Stations</a>
-        <a href="agb.html">AGB</a>
-        <a href="impressum.html">Impressum</a>
-        <a href="datenschutz.html">Datenschutz</a>
         <a href="https://www.instagram.com/feinstecher?igsh=MWR5NTczZnpta2lwbw==" target="_blank" class="flex items-center gap-2">
             <span class="material-symbols-outlined notranslate">photo_camera</span> Instagram
         </a>
@@ -530,7 +516,6 @@
             </div>
         </div>
 
-        <a href="booking.html" class="mt-8 bg-primary text-on-primary rounded px-8 py-4 text-sm font-bold uppercase tracking-widest">Jetzt Buchen</a>
     </div>
 
     <main>
@@ -720,79 +705,6 @@
                     <p class="font-body text-on-surface-variant">
                         Wir kümmern uns um die Infrastruktur, Hygiene-Standards und das Ambiente. Du konzentrierst dich voll und ganz auf deine Kunst und deine Kunden. Trete einer Community von Elite-Artists bei.
                     </p>
-                </div>
-            </div>
-        </section>
-        <!-- Pricing Tarife -->
-        <section class="py-16 md:py-32 bg-background relative overflow-hidden" id="tarife">
-            <div class="absolute -top-24 -right-24 w-96 h-96 bg-primary/5 blur-[120px] rounded-full"></div>
-            <div class="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
-                <div class="text-center mb-12 md:mb-24">
-                    <h2 class="font-headline text-4xl md:text-5xl font-bold text-on-surface mb-4 uppercase tracking-tight">Tarife</h2>
-                    <p class="text-primary font-headline uppercase tracking-[0.2em] text-sm">Wähle deinen Platz nach Bedarf</p>
-                </div>
-                
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
-                    <!-- 1 Tag -->
-                    <div class="bg-surface-container-low p-6 md:p-10 rounded border border-white/5 hover:border-primary/30 transition-all group flex flex-col justify-between">
-                        <div>
-                            <h3 class="font-headline text-xl md:text-2xl font-bold text-on-surface mb-1">1 Tag</h3>
-                            <p class="text-on-surface-variant text-sm mb-5">Einfach & Flexibel</p>
-                            <div class="font-headline text-3xl md:text-4xl font-bold text-primary mb-5 underline decoration-primary/20">70€</div>
-                        </div>
-                        <a href="booking.html?tier=1-day" class="btn-primary w-full">Jetzt Buchen</a>
-                    </div>
-                    <!-- 5 Tage -->
-                    <div class="bg-surface-container-low p-6 md:p-10 rounded border border-white/5 hover:border-primary/30 transition-all group flex flex-col justify-between">
-                        <div>
-                            <h3 class="font-headline text-xl md:text-2xl font-bold text-on-surface mb-1">5 Tage</h3>
-                            <p class="text-on-surface-variant text-sm mb-5">Gelegentliche Nutzung</p>
-                            <div class="font-headline text-3xl md:text-4xl font-bold text-primary mb-5">270€<span class="text-base text-on-surface-variant ml-1 font-normal">/mo</span></div>
-                        </div>
-                        <a href="booking.html?tier=5-days" class="btn-primary w-full">Jetzt Buchen</a>
-                    </div>
-                    <!-- 10 Tage -->
-                    <div class="bg-surface-container-low p-6 md:p-10 rounded border border-primary/50 bg-gradient-to-b from-primary/5 to-transparent transition-all group flex flex-col justify-between shadow-[0_30px_60px_rgba(0,178,178,0.05)]">
-                        <div>
-                            <div class="flex justify-between items-start">
-                                <h3 class="font-headline text-xl md:text-2xl font-bold text-on-surface mb-1">10 Tage</h3>
-                                <span class="bg-primary text-on-primary text-[10px] uppercase font-bold px-2 py-1 rounded-full">Beliebt</span>
-                            </div>
-                            <p class="text-on-surface-variant text-sm mb-5">Perfekt für Side-Hustles</p>
-                            <div class="font-headline text-3xl md:text-4xl font-bold text-primary mb-5">500€<span class="text-base text-on-surface-variant ml-1 font-normal">/mo</span></div>
-                        </div>
-                        <a href="booking.html?tier=10-days" class="btn-primary w-full">Jetzt Buchen</a>
-                    </div>
-                    <!-- 15 Tage -->
-                    <div class="bg-surface-container-low p-6 md:p-10 rounded border border-white/5 hover:border-primary/30 transition-all group flex flex-col justify-between">
-                        <div>
-                            <h3 class="font-headline text-xl md:text-2xl font-bold text-on-surface mb-1">15 Tage</h3>
-                            <p class="text-on-surface-variant text-sm mb-5">Regelmäßige Arbeit</p>
-                            <div class="font-headline text-3xl md:text-4xl font-bold text-primary mb-5">700€<span class="text-base text-on-surface-variant ml-1 font-normal">/mo</span></div>
-                        </div>
-                        <a href="booking.html?tier=15-days" class="btn-primary w-full">Jetzt Buchen</a>
-                    </div>
-                    <!-- 20 Tage -->
-                    <div class="bg-surface-container-low p-6 md:p-10 rounded border border-white/5 hover:border-primary/30 transition-all group flex flex-col justify-between">
-                        <div>
-                            <h3 class="font-headline text-xl md:text-2xl font-bold text-on-surface mb-1">20 Tage</h3>
-                            <p class="text-on-surface-variant text-sm mb-5">Vollzeit Artist</p>
-                            <div class="font-headline text-3xl md:text-4xl font-bold text-primary mb-5">830€<span class="text-base text-on-surface-variant ml-1 font-normal">/mo</span></div>
-                        </div>
-                        <a href="booking.html?tier=20-days" class="btn-primary w-full">Jetzt Buchen</a>
-                    </div>
-                    <!-- Unlimited -->
-                    <div class="bg-surface-container p-6 md:p-10 rounded border border-primary transition-all group flex flex-col justify-between shadow-[0_30px_60px_rgba(0,178,178,0.1)] sm:col-span-2 lg:col-span-1">
-                        <div>
-                            <div class="flex justify-between items-start">
-                                <h3 class="font-headline text-xl md:text-2xl font-bold text-primary mb-1 uppercase tracking-widest">Unlimited</h3>
-                                <span class="bg-primary text-on-primary text-[10px] uppercase font-bold px-2 py-1 rounded-full">Elite</span>
-                            </div>
-                            <p class="text-on-surface-variant text-sm mb-5">Maximale Freiheit</p>
-                            <div class="font-headline text-3xl md:text-4xl font-bold text-on-surface mb-5">1050€<span class="text-base text-on-surface-variant ml-1 font-normal">/mo</span></div>
-                        </div>
-                        <a href="booking.html?tier=unlimited" class="btn-primary w-full">Jetzt Buchen</a>
-                    </div>
                 </div>
             </div>
         </section>
