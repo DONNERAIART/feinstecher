@@ -69,12 +69,12 @@ h1 .reveal-box:nth-child(3) .reveal-content { animation-delay: 0.6s; }
 @layer base {
   body {
     @apply bg-background text-on-background font-body min-h-screen antialiased;
-    cursor: url("tattoomachine-cursor-final.png") 0 55, auto;
+    cursor: url("tattoomachine-cursor-glow-final.png") 8 63, auto;
   }
 }
 
 a, button, [role="button"], .tier-card {
-  cursor: url("tattoomachine-cursor-final.png") 0 55, pointer !important;
+  cursor: url("tattoomachine-cursor-glow-final.png") 8 63, pointer !important;
 }
 
 @layer components {
