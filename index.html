@@ -367,7 +367,7 @@
       #mobile-menu {
         display: none;
         position: fixed;
-        top: 80px;
+        top: 128px;
         left: 0;
         right: 0;
         bottom: 0;
@@ -390,6 +390,12 @@
         transition: color 0.3s;
       }
       #mobile-menu a:hover, #mobile-menu a.active { color: #5cd7e4; }
+      
+      .lang-option-mobile {
+        padding: 0.5rem 1rem;
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 2px;
+      }
 
       /* Global Tilted Tattoo Machine Cursor - Improved Needle Visibility */
       html, body {
@@ -442,15 +448,15 @@
       }
     </style>
 </head>
-<body class="bg-background text-on-background font-body selection:bg-primary-container selection:text-on-primary-container">
+<body class="bg-background text-on-background font-body selection:bg-primary/20 selection:text-primary">
     
     <!-- TopNavBar -->
     <nav class="fixed top-0 w-full z-50 bg-[#131313]/70 backdrop-blur-[20px] border-b border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.5)]">
         <div class="flex justify-between items-center h-32 px-4 md:px-8 max-w-7xl mx-auto">
             <a href="index.html" class="relative group flex-shrink-0">
                 <div class="logo-nav-container group-hover:scale-105 transition-all duration-300 active:scale-95">
-                    <img src="logo umranrandung.png" class="h-8 md:h-10 w-auto logo-outline-nav" alt="Feinstecher Logo Outline">
-                    <img src="feinstecherlogo innen.png" class="h-8 md:h-10 w-auto logo-fill-nav" alt="Feinstecher Logo Interior">
+                    <img src="logo umranrandung.png" class="logo-outline-nav" alt="Feinstecher Logo Outline">
+                    <img src="feinstecherlogo innen.png" class="logo-fill-nav" alt="Feinstecher Logo Interior">
                 </div>
             </a>
             <div class="hidden md:flex gap-8 items-center font-headline tracking-tight">

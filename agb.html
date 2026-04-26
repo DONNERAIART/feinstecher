@@ -8,6 +8,73 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    
+    <!-- Language & Cookie Services -->
+    <div id="google_translate_element" style="display:none !important;"></div>
+    <script>
+        window.LanguageService = {
+            languages: [
+                { code: 'de', name: 'Deutsch' },
+                { code: 'en', name: 'English' },
+                { code: 'es', name: 'Español' },
+                { code: 'fr', name: 'Français' }
+            ],
+            changeLanguage: function(langCode) {
+                const currentDisplays = document.querySelectorAll('#current-lang-name');
+                const langObj = this.languages.find(l => l.code === langCode);
+                if (langObj) currentDisplays.forEach(el => el.innerText = langObj.name);
+
+                if (langCode === 'de') {
+                    localStorage.setItem('feinstecher_lang', 'de');
+                    const cookies = ['googtrans', 'googtrans_ext'];
+                    const domains = [window.location.hostname, '.' + window.location.hostname];
+                    cookies.forEach(c => domains.forEach(d => {
+                        document.cookie = c + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + d;
+                        document.cookie = c + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                    }));
+                    window.location.reload();
+                    return;
+                }
+
+                const trigger = () => {
+                    const select = document.querySelector('.goog-te-combo');
+                    if (select) {
+                        select.value = langCode;
+                        select.dispatchEvent(new Event('change'));
+                        localStorage.setItem('feinstecher_lang', langCode);
+                        return true;
+                    }
+                    return false;
+                };
+
+                if (!trigger()) {
+                    let attempts = 0;
+                    const interval = setInterval(() => {
+                        attempts++;
+                        if (trigger() || attempts > 30) clearInterval(interval);
+                    }, 500);
+                }
+            }
+        };
+
+        window.googleTranslateElementInit = function() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'de',
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+
+        const observer = new MutationObserver(() => {
+            const bar = document.querySelector('.goog-te-banner-frame');
+            if (bar) bar.remove();
+            if (document.body.style.top !== '0px') document.body.style.top = '0px';
+            document.querySelectorAll('.skiptranslate').forEach(el => {
+                if (el.innerHTML.includes('google_translate_element') === false) el.style.display = 'none';
+            });
+        });
+        observer.observe(document.documentElement, { attributes: true, childList: true, subtree: true });
+    </script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -72,6 +139,40 @@
             0% { opacity: 1; clip-path: inset(0 0 100% 0); }
             100% { opacity: 1; clip-path: inset(0 0 0 0); }
         }
+
+        /* Mobile Menu */
+        #mobile-menu {
+            display: none;
+            position: fixed;
+            top: 128px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(19,19,19,0.98);
+            backdrop-filter: blur(20px);
+            z-index: 40;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+        #mobile-menu.open { display: flex; }
+        #mobile-menu a {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #e5e2e1;
+            transition: color 0.3s;
+        }
+        #mobile-menu a:hover, #mobile-menu a.active { color: #5cd7e4; }
+        
+        .lang-option-mobile {
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 2px;
+        }
     </style>
 </head>
 <body class="bg-background text-on-background font-body selection:bg-primary/20 selection:text-primary">
@@ -84,18 +185,67 @@
                     <img src="feinstecherlogo innen.png" class="logo-fill-nav" alt="Feinstecher Logo Interior">
                 </div>
             </a>
+            <div class="flex items-center gap-4">
+                <!-- Mobile: Menu Toggle -->
+                <button id="menu-toggle" class="md:hidden text-on-surface p-1" aria-label="Menu öffnen">
+                    <span class="material-symbols-outlined notranslate text-[28px]" id="menu-icon">menu</span>
+                </button>
+            </div>
+            
+            <div class="hidden md:flex gap-8 items-center font-headline tracking-tight">
+                <a class="text-[#E5E2E1]/70 hover:text-primary transition-all" href="index.html">Home</a>
+                <a class="text-[#E5E2E1]/70 hover:text-primary transition-all" href="booking.html">Stations</a>
+                <a class="text-primary border-b-2 border-primary pb-1 hover:opacity-80 transition-all" href="agb.html">AGB</a>
+                <a class="text-[#E5E2E1]/70 hover:text-primary transition-all" href="impressum.html">Impressum</a>
+            </div>
             <div class="flex items-center gap-6">
+                <!-- Language Switcher -->
+                <div class="relative group hidden md:block">
+                    <button class="flex items-center gap-2 px-3 py-1.5 border border-white/10 rounded-sm text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:border-primary transition-all">
+                        <span id="current-lang-name">Deutsch</span>
+                        <span class="material-symbols-outlined notranslate text-[14px]">expand_more</span>
+                    </button>
+                    <div class="absolute right-0 mt-4 w-40 bg-surface-container-high border border-white/10 rounded-sm shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden">
+                        <button data-lang="de" onclick="window.LanguageService.changeLanguage('de')" class="lang-option w-full text-left px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all">Deutsch</button>
+                        <button data-lang="en" onclick="window.LanguageService.changeLanguage('en')" class="lang-option w-full text-left px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all">English</button>
+                        <button data-lang="es" onclick="window.LanguageService.changeLanguage('es')" class="lang-option w-full text-left px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all">Español</button>
+                        <button data-lang="fr" onclick="window.LanguageService.changeLanguage('fr')" class="lang-option w-full text-left px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all">Français</button>
+                    </div>
+                </div>
+
                 <a href="https://www.instagram.com/feinstecher?igsh=MWR5NTczZnpta2lwbw==" target="_blank" class="text-[#E5E2E1]/70 hover:text-primary transition-all flex items-center gap-2 text-sm font-headline uppercase tracking-widest">
-                    <span class="material-symbols-outlined text-[18px]">photo_camera</span>
+                    <span class="material-symbols-outlined notranslate text-[18px]">photo_camera</span>
                     Instagram
-                </a>
-                <a href="index.html" class="text-[#E5E2E1]/70 hover:text-primary transition-all flex items-center gap-2 text-sm font-headline uppercase tracking-widest">
-                    <span class="material-symbols-outlined text-[18px]">arrow_back</span>
-                    Zurück
                 </a>
             </div>
         </div>
     </nav>
+
+    <!-- Mobile Fullscreen Menu -->
+    <div id="mobile-menu" role="dialog" aria-modal="true">
+        <a href="index.html">Home</a>
+        <a href="booking.html">Stations</a>
+        <a href="agb.html" class="active">AGB</a>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="https://www.instagram.com/feinstecher?igsh=MWR5NTczZnpta2lwbw==" target="_blank" class="flex items-center gap-2">
+            <span class="material-symbols-outlined notranslate">photo_camera</span> Instagram
+        </a>
+        <a href="login.html">Login</a>
+        
+        <!-- Mobile Language Switcher -->
+        <div class="mt-8 pt-8 border-t border-white/10 w-full flex flex-col items-center gap-4">
+            <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-white/30">Sprache wählen</p>
+            <div class="flex gap-4">
+                <button data-lang="de" onclick="window.LanguageService.changeLanguage('de')" class="lang-option-mobile text-xs font-bold uppercase tracking-widest text-white/50 hover:text-primary transition-all">DE</button>
+                <button data-lang="en" onclick="window.LanguageService.changeLanguage('en')" class="lang-option-mobile text-xs font-bold uppercase tracking-widest text-white/50 hover:text-primary transition-all">EN</button>
+                <button data-lang="es" onclick="window.LanguageService.changeLanguage('es')" class="lang-option-mobile text-xs font-bold uppercase tracking-widest text-white/50 hover:text-primary transition-all">ES</button>
+                <button data-lang="fr" onclick="window.LanguageService.changeLanguage('fr')" class="lang-option-mobile text-xs font-bold uppercase tracking-widest text-white/50 hover:text-primary transition-all">FR</button>
+            </div>
+        </div>
+
+        <a href="booking.html" class="mt-8 bg-primary text-on-primary rounded px-8 py-4 text-sm font-bold uppercase tracking-widest">Jetzt Buchen</a>
+    </div>
 
     <main class="pt-40 pb-24 px-8 max-w-4xl mx-auto">
         <header class="mb-16 border-l-4 border-primary pl-8">
@@ -179,5 +329,18 @@
         </div>
     </footer>
 
+    <script>
+        // Mobile Menu Toggle
+        const toggle = document.getElementById('menu-toggle');
+        const menu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        if (toggle && menu) {
+            toggle.addEventListener('click', () => {
+                menu.classList.toggle('open');
+                menuIcon.textContent = menu.classList.contains('open') ? 'close' : 'menu';
+                document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+            });
+        }
+    </script>
 </body>
 </html>

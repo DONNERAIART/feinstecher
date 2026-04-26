@@ -303,6 +303,20 @@
                     <img src="feinstecherlogo innen.png" class="logo-fill-nav" alt="Feinstecher Logo Interior">
                 </div>
             </a>
+            
+            <div class="flex items-center gap-4">
+                <!-- Mobile: Menu Toggle -->
+                <button id="menu-toggle" class="md:hidden text-on-surface p-1" aria-label="Menu öffnen">
+                    <span class="material-symbols-outlined notranslate text-[28px]" id="menu-icon">menu</span>
+                </button>
+            </div>
+            
+            <div class="hidden md:flex gap-8 items-center font-headline tracking-tight">
+                <a class="text-[#E5E2E1]/70 hover:text-primary transition-all" href="index.html">Home</a>
+                <a class="text-[#E5E2E1]/70 hover:text-primary transition-all" href="booking.html">Stations</a>
+                <a class="text-[#E5E2E1]/70 hover:text-primary transition-all" href="agb.html">AGB</a>
+                <a class="text-[#E5E2E1]/70 hover:text-primary transition-all" href="impressum.html">Impressum</a>
+            </div>
             <div class="flex items-center gap-6">
                 <!-- Language Switcher -->
                 <div class="relative group hidden md:block">
@@ -311,20 +325,46 @@
                         <span class="material-symbols-outlined notranslate text-[14px]">expand_more</span>
                     </button>
                     <div class="absolute right-0 mt-4 w-40 bg-surface-container-high border border-white/10 rounded-sm shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden">
-                        <button data-lang="de" class="lang-option w-full text-left px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all">Deutsch</button>
-                        <button data-lang="en" class="lang-option w-full text-left px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all">English</button>
-                        <button data-lang="es" class="lang-option w-full text-left px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all">Español</button>
-                        <button data-lang="fr" class="lang-option w-full text-left px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all">Français</button>
+                        <button data-lang="de" onclick="window.LanguageService.changeLanguage('de')" class="lang-option w-full text-left px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all">Deutsch</button>
+                        <button data-lang="en" onclick="window.LanguageService.changeLanguage('en')" class="lang-option w-full text-left px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all">English</button>
+                        <button data-lang="es" onclick="window.LanguageService.changeLanguage('es')" class="lang-option w-full text-left px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all">Español</button>
+                        <button data-lang="fr" onclick="window.LanguageService.changeLanguage('fr')" class="lang-option w-full text-left px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all">Français</button>
                     </div>
                 </div>
 
-                <a href="index.html" class="text-[#E5E2E1]/70 hover:text-primary transition-all flex items-center gap-2 text-sm font-headline uppercase tracking-widest">
-                    <span class="material-symbols-outlined notranslate text-[18px]">arrow_back</span>
-                    Zurück
+                <a href="https://www.instagram.com/feinstecher?igsh=MWR5NTczZnpta2lwbw==" target="_blank" class="text-[#E5E2E1]/70 hover:text-primary transition-all flex items-center gap-2 text-sm font-headline uppercase tracking-widest">
+                    <span class="material-symbols-outlined notranslate text-[18px]">photo_camera</span>
+                    Instagram
                 </a>
             </div>
         </div>
     </nav>
+
+    <!-- Mobile Fullscreen Menu -->
+    <div id="mobile-menu" role="dialog" aria-modal="true">
+        <a href="index.html">Home</a>
+        <a href="booking.html">Stations</a>
+        <a href="agb.html">AGB</a>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="https://www.instagram.com/feinstecher?igsh=MWR5NTczZnpta2lwbw==" target="_blank" class="flex items-center gap-2">
+            <span class="material-symbols-outlined notranslate">photo_camera</span> Instagram
+        </a>
+        <a href="login.html" class="active">Login</a>
+        
+        <!-- Mobile Language Switcher -->
+        <div class="mt-8 pt-8 border-t border-white/10 w-full flex flex-col items-center gap-4">
+            <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-white/30">Sprache wählen</p>
+            <div class="flex gap-4">
+                <button data-lang="de" onclick="window.LanguageService.changeLanguage('de')" class="lang-option-mobile text-xs font-bold uppercase tracking-widest text-white/50 hover:text-primary transition-all">DE</button>
+                <button data-lang="en" onclick="window.LanguageService.changeLanguage('en')" class="lang-option-mobile text-xs font-bold uppercase tracking-widest text-white/50 hover:text-primary transition-all">EN</button>
+                <button data-lang="es" onclick="window.LanguageService.changeLanguage('es')" class="lang-option-mobile text-xs font-bold uppercase tracking-widest text-white/50 hover:text-primary transition-all">ES</button>
+                <button data-lang="fr" onclick="window.LanguageService.changeLanguage('fr')" class="lang-option-mobile text-xs font-bold uppercase tracking-widest text-white/50 hover:text-primary transition-all">FR</button>
+            </div>
+        </div>
+
+        <a href="booking.html" class="mt-8 bg-primary text-on-primary rounded px-8 py-4 text-sm font-bold uppercase tracking-widest">Jetzt Buchen</a>
+    </div>
 
     <main class="min-h-screen pt-32 pb-24 px-4 flex items-center justify-center relative overflow-hidden">
         <!-- Abstract Background Glows -->
@@ -495,6 +535,18 @@
         // Check if already logged in
         if (AuthService.isLoggedIn()) {
             window.location.href = 'profile.html';
+        }
+
+        // Mobile Menu Toggle
+        const toggle = document.getElementById('menu-toggle');
+        const menu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        if (toggle && menu) {
+            toggle.addEventListener('click', () => {
+                menu.classList.toggle('open');
+                menuIcon.textContent = menu.classList.contains('open') ? 'close' : 'menu';
+                document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+            });
         }
     </script>
 </body>
