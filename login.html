@@ -287,6 +287,39 @@
             0% { opacity: 1; clip-path: inset(0 0 100% 0); }
             100% { opacity: 1; clip-path: inset(0 0 0 0); }
         }
+        /* Mobile Menu */
+        #mobile-menu {
+            display: none;
+            position: fixed;
+            top: 128px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(19,19,19,0.98);
+            backdrop-filter: blur(20px);
+            z-index: 40;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+        #mobile-menu.open { display: flex; }
+        #mobile-menu a {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #e5e2e1;
+            transition: color 0.3s;
+        }
+        #mobile-menu a:hover, #mobile-menu a.active { color: #5cd7e4; }
+        
+        .lang-option-mobile {
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 2px;
+        }
         .auth-container {
             backdrop-filter: blur(20px);
             background: rgba(28, 27, 27, 0.4);
